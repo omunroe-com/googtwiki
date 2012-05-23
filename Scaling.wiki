@@ -47,7 +47,7 @@ High ref counts can have impacts in many places in the git/jgit/Gerrit stacks.  
 
 === DB Slaves ===
 
-I am not aware of anyone using DB slaves yet, but it should help offload much of the WAN traffic to remote slaves.  This could be particularly helpful to help reduce some WAN traffic related to high ref counts.
+I am not aware of anyone using DB slaves yet, but it should help offload much of the WAN traffic to remote slaves.  This could be particularly helpful to help reduce some WAN traffic related to high ref counts.  A potential [https://gerrit-review.googlesource.com/#/c/35220 workaround]
 
 === Tags ===
 
