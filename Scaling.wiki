@@ -1,6 +1,6 @@
 #summary Scaling Gerrit Installations
 
-= Introduction =
+= Master =
 
 The first step to scaling is to scale your master server.  Some easy, but pricey ways to scale your master are:
 
@@ -8,3 +8,7 @@ The first step to scaling is to scale your master server.  Some easy, but pricey
   * Adding RAM, most of the larger installations have at least 48GM, some have 100+GB
   * Ensure fast disk IO, SSDs help
   * Network, I suspect that most large installs use 10GB
+
+= Mirrors/Slaves =
+
+One you have a decent master, it is probably worth adding either some git mirrors (if you do not need ACLs on your repos), or Gerrit slaves to help offload much of your read only requests.
