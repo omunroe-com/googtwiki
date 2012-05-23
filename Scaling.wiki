@@ -63,7 +63,7 @@ jGit still has a [http://groups.google.com/group/repo-discuss/browse_thread/thre
 
 ===== Tags =====
 
-If you have android repositories, you likely use around 400 of them.  Cross project can tagging can be [http://marc.info/?l=git&m=133772533609422&w=2 problematic].  There are no good solutions yet to this problem.
+If you have android repositories, you likely use around 400 of them.  Cross project tagging can be [http://marc.info/?l=git&m=133772533609422&w=2 problematic].  There are no good solutions yet to this problem.
 
 ===== Changes =====
 
@@ -76,7 +76,7 @@ Installations which do not have enough spare disk space for their repos can run 
 
 ===== Git GC Repo Explosions =====
 
-Under certain conditions git gc can cause a repo explosion, primarily when unreferenced objects are removed from pack files and are placed as loose refs in the filesystem.  Eventually git gc should prune these, but until that happens serious [https://gerrit-review.googlesource.com/#/c/35215/ problems] can occur (not mentioned there is all excessive BW taken by filesystem mirroring scripts such as rysnc after gc is run).
+Under certain conditions git gc can cause a repo explosion, primarily when unreferenced objects are removed from pack files and are placed as loose refs in the filesystem.  Eventually git gc should prune these, but until that happens serious problems can occur.
 
 Some of the situations which can cause many unreferenced objects:
 
@@ -86,7 +86,7 @@ Some of the situations which can cause many unreferenced objects:
 
 ===== Git GC =====
 
-Running GC regularly is important, jgit does not have built in gc so unlike a regular git repo it will not auto run every now and then.  Setting up a crontab is probably a good idea.  If you do run gc too often, however excessive pack file churn can also be a problem.
+Running GC regularly is important, jgit does not have built in gc so unlike a regular git repo it will not auto run every now and then.  Setting up a crontab is probably a good idea.  If you do run gc too often, however excessive pack file churn can also be a problem.  A potential [https://gerrit-review.googlesource.com/#/c/35215/ solution] for packfile churn.  Pack file churn can lead to several issues, RAM utilization, Disk utilization and excessive BW utilization from filesystem mirroring scripts (such as rysnc).
 
 ===== Keep and Noz files =====
 
