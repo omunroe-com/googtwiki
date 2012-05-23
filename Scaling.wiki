@@ -7,11 +7,11 @@ The first step to scaling is to scale your master server.  Some easy, but pricey
   * Adding cores, some of the larger installations use 24 core machines
   * Adding RAM, most of the larger installations have at least 48GM, some have 100+GB
   * Ensure fast disk IO, SSDs help
-  * Network, I suspect that most large installs use 10GB
+  * Network, I suspect that most large installs use 10Gb ethernet
 
 = Mirrors/Slaves =
 
-One you have a decent master, it is probably worth adding either some git mirrors (if you do not need ACLs on your repos), or Gerrit slaves to help offload much of your read only requests.
+One you have a decent master, it is probably worth adding either some git mirrors (if you do not need ACLs on your repos), or Gerrit slaves to help offload much of your read only requests.  Mirrors/Slaves can also help reduce LAN and WAN traffic if you place them nearer your users/build hosts.  Some of the larger installations have at least 7 of these.
 
 = Issues =
 
@@ -38,6 +38,10 @@ Jsch has threading issues which seem to serialize replication even across worker
 == High Ref Counts ==
 
 High ref counts can have impacts in many places in the git/jgit/Gerrit stacks.  There are many ongoing fixes and tweaks to alleviated many of these problems, but some of them still remain.  Some can be "unofficially" worked around.
+
+=== DB Slaves ===
+
+I am not aware of anyone using DB slaves yet, but it should help offload much of the WAN traffic to remote slaves.  This could be particularly helpful to help reduce some WAN traffic related to high ref counts.
 
 === Tags ===
 
