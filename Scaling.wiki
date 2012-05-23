@@ -21,7 +21,7 @@ As you scale, you will always run into some issues.  Depending on your specific 
 
 === JSch ===
 
-Jsch has threading issues which seem to serialize replication even across worker groups
+Jsch has threading issues which seem to serialize replication even across worker groups.  This has lead some teams to perform replication without using ssh (Jsch is the ssh implementation used inside jgit).  To do this, you may setup a "write only" git deamon on your slaves with a port only open to your Gerrit master and replicate via git daemon without authentication or encryption.  This is particularly useful if you have sites which replicate to at very different speeds.
 
 == Tags ==
 
@@ -31,7 +31,7 @@ Jsch has threading issues which seem to serialize replication even across worker
 
 == Git GC ==
 
-Running GC regularly is important, but excessive pack file churn can also be a problem.
+Running GC regularly is important, jgit does not have built in gc so unlike a regular git repo it will not auto run every now and then.  Setting up a crontab is probably a good idea.  If you do run gc too often, however excessive pack file churn can also be a problem.
 
 == Disk Space ==
 
