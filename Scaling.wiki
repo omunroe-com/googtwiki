@@ -2,17 +2,9 @@
 
 = Introduction =
 
-The first step to scaling is to scale your primary master server.  You can scale the server by:
+The first step to scaling is to scale your master server.  Some easy, but pricey ways to scale your master are:
 
-* Adding cores, some of the larger installations use 24 core machines
-* Adding RAM, most of the larger installations have at least 48GM, some have 100+GB
-* Ensure fast disk IO, SSDs help
-* Network, I suspect that most large installs use 10GB
-
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+  * Adding cores, some of the larger installations use 24 core machines
+  * Adding RAM, most of the larger installations have at least 48GM, some have 100+GB
+  * Ensure fast disk IO, SSDs help
+  * Network, I suspect that most large installs use 10GB
