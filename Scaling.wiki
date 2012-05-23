@@ -17,40 +17,46 @@ One you have a decent master, it is probably worth adding either some git mirror
 
 As you scale, you will always run into some issues.  Depending on your specific setup those issues may be very different from what other people are running into.
 
-== Replication ==
+== Repo Syncs ==
 
-=== JSch ===
+With beefier servers, many people have seen channel master issues with ssh.  You may set GIT_SSH to avoid these:
 
-Jsch has threading issues which seem to serialize replication even across worker groups.  This has lead some teams to perform replication without using ssh (Jsch is the ssh implementation used inside jgit).  To do this, you may setup a "write only" git deamon on your slaves with a port only open to your Gerrit master and replicate via git daemon without authentication or encryption.  This is particularly useful if you have sites which replicate to at very different speeds.
+  export GIT_SSH=$(which ssh) 
 
-== Tags ==
-
-== Changes ==
-
-== ACLS ==
-
-== Git GC ==
-
-Running GC regularly is important, jgit does not have built in gc so unlike a regular git repo it will not auto run every now and then.  Setting up a crontab is probably a good idea.  If you do run gc too often, however excessive pack file churn can also be a problem.
-
-== Disk Space ==
-
-== Keep and Noz files ==
-
-Currently, Gerrit may leave behind some temporary files in your git repos when it shuts down (particularly if ungraceful).  There are some temporary files which begin with "noz", this can consume disk space if left uncleaned.  There are also some .keep files in the objects/pack directories which can be left behind, these don't in themselves don't take space, but they will prevent git gc from repacking the packfile they are associated with which can lead to poor disk space utilization and performance issues.
-
-
-== ~/.gerritcodereview ==
-
-The temporary unjared war files in here can build up.  (This has been move to review_site/tmp in Gerrit 2.5+)
 
 == Java GC ==
 
 If you overload your server too much, eventually java gc may block.  Large blocking times of over 1 min can be seen under extreme loads.  Limiting the ssh max threads can help prevent this.  Another solution may be to tweak the jvm gc parameters (I have not had luck with that).
 
 
-== Repo Syncs ==
+== Replication ==
 
-With beefier servers, many people have seen channel master issues with ssh.  You may set GIT_SSH to avoid these:
+=== JSch ===
 
-  export GIT_SSH=$(which ssh) 
+Jsch has threading issues which seem to serialize replication even across worker groups.  This has lead some teams to perform replication without using ssh (Jsch is the ssh implementation used inside jgit).  To do this, you may setup a "write only" git deamon on your slaves with a port only open to your Gerrit master and replicate via git daemon without authentication or encryption.  This is particularly useful if you have sites which replicate to at very different speeds.
+
+== High Ref Counts ==
+
+High ref counts can have impacts in many places in the git/jgit/Gerrit stacks.  There are many ongoing fixes and tweaks to alleviated many of these problems, but some of them still remain.  Some can be "unofficially" worked around.
+
+=== Tags ===
+
+=== Changes ===
+
+=== ACLS ===
+
+
+== Disk Space ==
+
+=== Git GC ===
+
+Running GC regularly is important, jgit does not have built in gc so unlike a regular git repo it will not auto run every now and then.  Setting up a crontab is probably a good idea.  If you do run gc too often, however excessive pack file churn can also be a problem.
+
+=== Keep and Noz files ===
+
+Currently, Gerrit may leave behind some temporary files in your git repos when it shuts down (particularly if ungraceful).  There are some temporary files which begin with "noz", this can consume disk space if left uncleaned.  There are also some .keep files in the objects/pack directories which can be left behind, these don't in themselves don't take space, but they will prevent git gc from repacking the packfile they are associated with which can lead to poor disk space utilization and performance issues.
+
+
+=== ~/.gerritcodereview ===
+
+The temporary unjared war files in here can build up.  (This has been move to review_site/tmp in Gerrit 2.5+)
