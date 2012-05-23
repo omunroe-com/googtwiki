@@ -35,8 +35,22 @@ Running GC regularly is important, jgit does not have built in gc so unlike a re
 
 == Disk Space ==
 
+== Keep and Noz files ==
+
+Currently, Gerrit may leave behind some temporary files in your git repos when it shuts down (particularly if ungraceful).  There are some temporary files which begin with "noz", this can consume disk space if left uncleaned.  There are also some .keep files in the objects/pack directories which can be left behind, these don't in themselves don't take space, but they will prevent git gc from repacking the packfile they are associated with which can lead to poor disk space utilization and performance issues.
+
+
+== ~/.gerritcodereview ==
+
+The temporary unjared war files in here can build up.  (This has been move to review_site/tmp in Gerrit 2.5+)
+
 == Java GC ==
+
+If you overload your server too much, eventually java gc may block.  Large blocking times of over 1 min can be seen under extreme loads.  Limiting the ssh max threads can help prevent this.  Another solution may be to tweak the jvm gc parameters (I have not had luck with that).
+
 
 == Repo Syncs ==
 
-Channel Master Issues.
+With beefier servers, many people have seen channel master issues with ssh.  You may set GIT_SSH to avoid these:
+
+  export GIT_SSH=$(which ssh) 
