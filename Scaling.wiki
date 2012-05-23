@@ -25,7 +25,7 @@ The default built in container which Gerrit uses is Jetty.  Some installations h
 
 === Repo Syncs ===
 
-With beefier servers, many people have seen channel master issues with ssh.  You may set GIT_SSH to avoid these:
+With beefier servers, many people have [http://groups.google.com/group/repo-discuss/browse_thread/thread/c8f003f2247d7157/ad6915f5558df8f5?lnk=gst&q=repo+sync+error#ad6915f5558df8f5 seen] channel master issues with ssh.  You may set GIT_SSH to avoid these:
 
   export GIT_SSH=$(which ssh) 
 
