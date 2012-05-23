@@ -63,12 +63,26 @@ jGit still has a [http://groups.google.com/group/repo-discuss/browse_thread/thre
 
 ===== Tags =====
 
+If you have android repositories, you likely use around 400 of them.  Cross project can tagging can be [http://marc.info/?l=git&m=133772533609422&w=2 problematic].  There are no good solutions yet to this problem.
+
 ===== Changes =====
 
 ===== ACLS =====
 
 
 === Disk Space ===
+
+Installations which do not have enough spare disk space for their repos can run into problems easily.  Be aware that git repos contain highly compressed data and that at times this data may need to be uncompressed.  It is easy to underestimate the temporary needs of repositories because git is so good at compressing this data.  However, minor changes can cause repositories to "explode" so it is good to plan for this and leave a lot of free space for this to never be an issue.  This is particularly important for those using SSDs where they might be more likely to skimp on space.
+
+===== Git GC Repo Explosions =====
+
+Under certain conditions git gc can cause a repo explosion, primarily when unreferenced objects are removed from pack files and are placed as loose refs in the filesystem.  Eventually git gc should prune these, but until that happens serious problems can occur.
+
+Some of the situations which can cause many unreferenced objects:
+
+  *  A user uploads a change to the wrong repository and it gets rejected by Gerrit
+  *  Tags are [http://marc.info/?l=git&m=131829057610072&w=2 deleted] from the linux repo
+
 
 ===== Git GC =====
 
