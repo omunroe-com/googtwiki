@@ -18,63 +18,67 @@ One you have a decent master, it is probably worth adding either some git mirror
 As you scale, you will always run into some issues.  Depending on your specific setup those issues may be very different from what other people are running into.
 
 
-== Jetty ==
+=== Jetty ===
 
 The default built in container which Gerrit uses is Jetty.  Some installations have had serious "Failed to dispatch" errors which lead to 100%CPU and filled up logs requiring a server reboot.  One way to workaround this issue appears to be using [https://gerrit-review.googlesource.com/#/c/35010/6/Documentation/install-tomcat.txt Tomcat] instead to replace Jetty.
 
 
-== Repo Syncs ==
+=== Repo Syncs ===
 
 With beefier servers, many people have seen channel master issues with ssh.  You may set GIT_SSH to avoid these:
 
   export GIT_SSH=$(which ssh) 
 
 
-== Java GC ==
+=== Java GC ===
 
 If you overload your server too much, eventually java gc may block.  Large blocking times of over 1 min can be seen under extreme loads.  Limiting the ssh max threads can help prevent this.  Another solution may be to tweak the jvm gc parameters (I have not had luck with that).
 
 
-== Replication ==
+=== Replication ===
 
-=== JSch ===
+===== JSch =====
 
 Jsch has threading issues which seem to serialize replication even across worker groups.  This has lead some teams to perform replication without using ssh (Jsch is the ssh implementation used inside jgit).  To do this, you may setup a "write only" git deamon on your slaves with a port only open to your Gerrit master and replicate via git daemon without authentication or encryption.  This is particularly useful if you have sites which replicate to at very different speeds.
 
-== High Ref Counts ==
+=== High Ref Counts ===
 
 High ref counts can have impacts in many places in the git/jgit/Gerrit stacks.  There are many ongoing fixes and tweaks to alleviated many of these problems, but some of them still remain.  Some can be "unofficially" worked around.
 
-=== DB Slaves ===
+===== DB Slaves =====
 
 I am not aware of anyone using DB slaves yet, but it should help offload much of the WAN traffic to remote slaves.  This could be particularly helpful to help reduce some WAN traffic related to high ref counts.  A potential [https://gerrit-review.googlesource.com/#/c/35220 workaround].
 
-== git daemon mirrors ==
+===== git daemon mirrors =====
 
 Current versions (prior to git 1.7.11) will use an excessive amount of CPU when receiving pushes on sites with high ref counts.  Upgrading git there can help drastically reduce your replication time in these cases.
 
-== git ==
+===== git =====
 
 Suggest to your users that they use the latest git possible, many of the older versions (which are still the defaults on many distros) have severs problems with high ref counts.  Particularly [http://marc.info/?l=git&m=131552810309538&w=2 bad] versions are between 1.7.4.1 and 1.7.7.
 
-=== Tags ===
+===== jgit =====
 
-=== Changes ===
+jGit still has a [http://groups.google.com/group/repo-discuss/browse_thread/thread/d0914922dc565516 performance problem] with high refs.  An experimental [https://git.eclipse.org/r/5491 patch] has been proposed and will drastically reduce upload and replication times in Gerrit if applied for repos with many (> 60K?) patch sets.
 
-=== ACLS ===
+===== Tags =====
+
+===== Changes =====
+
+===== ACLS =====
 
 
-== Disk Space ==
+=== Disk Space ===
 
-=== Git GC ===
+===== Git GC =====
 
 Running GC regularly is important, jgit does not have built in gc so unlike a regular git repo it will not auto run every now and then.  Setting up a crontab is probably a good idea.  If you do run gc too often, however excessive pack file churn can also be a problem.
 
-=== Keep and Noz files ===
+===== Keep and Noz files =====
 
 Currently, Gerrit may leave behind some temporary files in your git repos when it shuts down (particularly if ungraceful).  There are some temporary files which begin with "noz", this can consume disk space if left uncleaned.  There are also some .keep files in the objects/pack directories which can be left behind, these don't in themselves don't take space, but they will prevent git gc from repacking the packfile they are associated with which can lead to poor disk space utilization and performance issues.
 
 
-=== ~/.gerritcodereview ===
+===== ~/.gerritcodereview =====
 
 The temporary unjared war files in here can build up.  (This has been move to review_site/tmp in Gerrit 2.5+)
