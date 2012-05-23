@@ -47,7 +47,15 @@ High ref counts can have impacts in many places in the git/jgit/Gerrit stacks.  
 
 === DB Slaves ===
 
-I am not aware of anyone using DB slaves yet, but it should help offload much of the WAN traffic to remote slaves.  This could be particularly helpful to help reduce some WAN traffic related to high ref counts.  A potential [https://gerrit-review.googlesource.com/#/c/35220 workaround]
+I am not aware of anyone using DB slaves yet, but it should help offload much of the WAN traffic to remote slaves.  This could be particularly helpful to help reduce some WAN traffic related to high ref counts.  A potential [https://gerrit-review.googlesource.com/#/c/35220 workaround].
+
+== git daemon mirrors ==
+
+Current versions (prior to git 1.7.11) will use an excessive amount of CPU when receiving pushes on sites with high ref counts.  Upgrading git there can help drastically reduce your replication time in these cases.
+
+== git ==
+
+Suggest to your users that they use the latest git possible, many of the older versions (which are still the defaults on many distros) have severs problems with high ref counts.  Particularly [http://marc.info/?l=git&m=131552810309538&w=2 bad] versions are between 1.7.4.1 and 1.7.7.
 
 === Tags ===
 
