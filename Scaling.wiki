@@ -11,7 +11,11 @@ The first step to scaling is to scale your master server.  Some easy, but pricey
 
 = Mirrors/Slaves =
 
-One you have a decent master, it is probably worth adding either some git mirrors (if you do not need ACLs on your repos), or Gerrit slaves to help offload much of your read only requests.  Mirrors/Slaves can also help reduce LAN and WAN traffic if you place them nearer your users/build hosts.  Some of the larger installations have at least 7 of these.
+Once you have a decent master, it is probably worth adding either some git mirrors (if you do not need ACLs on your repos), or Gerrit slaves to help offload much of your read only requests.  Mirrors/Slaves can also help reduce LAN and WAN traffic if you place them nearer your users/build hosts.  Some of the larger installations have at least 7 of these.
+
+= Multi - Master =
+
+Gerrit cannot yet be run in multi master mode, at least not the open source version.  The gerrit-review site does currently run in multi master mode, but it does not use the same code base as the open source version.  This however means that we are mostly aware of what it will takE to make Gerrit support MultiMaster.  
 
 = Issues =
 
