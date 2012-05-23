@@ -76,7 +76,7 @@ Installations which do not have enough spare disk space for their repos can run 
 
 ===== Git GC Repo Explosions =====
 
-Under certain conditions git gc can cause a repo explosion, primarily when unreferenced objects are removed from pack files and are placed as loose refs in the filesystem.  Eventually git gc should prune these, but until that happens serious problems can occur.
+Under certain conditions git gc can cause a repo explosion, primarily when unreferenced objects are removed from pack files and are placed as loose refs in the filesystem.  Eventually git gc should prune these, but until that happens serious [https://gerrit-review.googlesource.com/#/c/35215/ problems] can occur (not mentioned there is all excessive BW taken by filesystem mirroring scripts such as rysnc after gc is run).
 
 Some of the situations which can cause many unreferenced objects:
 
