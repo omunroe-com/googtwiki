@@ -51,7 +51,7 @@ I am not aware of anyone using DB slaves yet, but it should help offload much of
 
 ===== git daemon mirrors =====
 
-Current versions (prior to git 1.7.11) will use an excessive amount of CPU when receiving pushes on sites with high ref counts.  Upgrading git there can help drastically reduce your replication time in these cases.
+Current versions (prior to git 1.7.11) will use an [http://marc.info/?l=git&m=133310001303068&w=2 excessive amount of CPU] when receiving pushes on sites with high ref counts.  Upgrading git there can help drastically reduce your replication time in these cases.
 
 ===== git =====
 
