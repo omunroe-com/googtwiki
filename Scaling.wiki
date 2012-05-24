@@ -15,7 +15,7 @@ Once you have a decent master, it is probably worth adding either some git mirro
 
 = Multi - Master =
 
-Gerrit cannot yet be run in multi master mode, at least not the open source version.  The gerrit-review site does currently run in multi master mode, but it does not use the same code base as the open source version.  This however means that we are mostly aware of what it will takE to make Gerrit support MultiMaster.  
+Gerrit cannot yet be run in multi master mode, at least not the open source version.  The gerrit-review site does currently run in multi master mode, but it does not use the same code base as the open source version.  This however means that we are mostly aware of what it will take to make Gerrit support MultiMaster.  Any contributions in this direction should help make this a reality more quickly.
 
 = Issues =
 
