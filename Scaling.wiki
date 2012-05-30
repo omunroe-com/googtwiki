@@ -19,7 +19,17 @@ Gerrit cannot yet be run in multi master mode, at least not the open source vers
 
 = Issues =
 
-As you scale, you will always run into some issues.  Depending on your specific setup those issues may be very different from what other people are running into.
+As you scale, you will always run into some issues.  Depending on your specific setup those issues may be very different from what other people are running into.  Some of the specific axes which people may or may not need to scale on are:
+
+ * Number of Projects: Some Gerrit installs have 10K projects, many have at least 1K
+ * Number of Refs: Some Gerrit installs have projects with 250K refs
+ * Repository Sizes:  Some Gerrit projects are 40G aggressively packed, these can often cause issues with email templates taking lots of CPU
+ * Large Files: Gerrit may have difficulty with some very large files (what size can it handle easily?)
+ * Number of Groups: Some Gerrit installs use 6K groups (most issues have been worked out here)
+ * Number of Users: Many installs server 1K users, some serve at least 3K.
+
+ 
+
 
 
 === Jetty ===
