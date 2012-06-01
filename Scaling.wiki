@@ -51,9 +51,15 @@ If you overload your server too much, eventually java gc may block.  Large block
 
 === Replication ===
 
+There are many scalibility issues which can plague replication, most are related to high ref counts, those are not specifically mentioned here, so you will likely need to first be familiar with the "High Ref Counts" section to make replication run smoothly.
+
 ===== JSch =====
 
 Jsch has threading issues which seem to serialize replication even across worker groups.  This has lead some teams to perform replication without using ssh (Jsch is the ssh implementation used inside jgit).  To do this, you may setup a "write only" git deamon on your slaves with a port only open to your Gerrit master and replicate via git daemon without authentication or encryption.  This is particularly useful if you have sites which replicate to at very different speeds.
+
+===== Failed To Lock =====
+
+If you have a fairly smooth replication setup, your replication can start running into contention and failing with "Failed to Lock" errors in your logs.  This can happen when 2 separate threads attempt to replicate the same project/branch combination.  The Gerrit replication code does not yet retry these failures and it can result in your mirrors being out of date.
 
 === High Ref Counts ===
 
