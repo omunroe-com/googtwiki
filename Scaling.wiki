@@ -106,7 +106,11 @@ Some of the situations which can cause many unreferenced objects:
 
 ===== Git GC =====
 
-Running GC regularly is important, jgit does not have built in gc so unlike a regular git repo it will not auto run every now and then.  Setting up a crontab is probably a good idea.  If you do run gc too often, however excessive pack file churn can also be a problem.  A potential [https://gerrit-review.googlesource.com/#/c/35215/ solution] for packfile churn.  Pack file churn can lead to several issues, RAM utilization, Disk utilization and excessive BW utilization from filesystem mirroring scripts (such as rysnc).
+Running GC regularly is important, jgit does not have built in gc so unlike a regular git repo it will not auto run every now and then.  Setting up a crontab is probably a good idea.  If you do run gc too often, however excessive pack file churn can also be a problem.  A potential [https://gerrit-review.googlesource.com/#/c/35215/ solution] for packfile churn:
+
+  nice -n 19 ionice -c 3 gitexproll.sh -r 5 ...
+
+Pack file churn can lead to several issues, RAM utilization, Disk utilization and excessive BW utilization from filesystem mirroring scripts (such as rysnc).
 
 ===== Keep and Noz files =====
 
