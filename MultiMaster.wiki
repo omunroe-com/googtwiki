@@ -22,8 +22,9 @@ upgrading to some sort of voting mechanism among peer masters to choose a submit
 
 #3 can be solved similarly to #2, select a replication master.  The replication master is responsible to rerun full replication on startup and anytime a master goes down (since it may have currently been replicating something).  Otherwise, masters can replicate as they would normally (as a single master) as they cause ref updates.  Since there is a bug where replication "failed to lock" attempts are not retried currently, this should also be fixed since they will likely be even more prevalent with multi master setups.
 
-A simple ssh connection between peers was deemed sufficient in most cases to accomplish both #1 and #2.  Although a single form of communication is not very good since it prevents the cluster from distinguishing between a downed node and a network split.  Without being able to distinguish this, the cluster cannot dynamically adapt when communication is down with a peer.  Likely a cluster should have a backdoor com channel to help indicate inter node network failures, since the DB and the Repos are shared in this scenario, either could easily be used for the back door channel (CAF is using the repos: All-Projects:refs/meta/masters/<node>).
+A simple ssh connection between peers was deemed sufficient in most cases to accomplish both #1 and #2.  Although a single form of communication is not very good since it prevents the cluster from distinguishing between a downed node and a network split.  Without being able to distinguish this, the cluster cannot dynamically adapt when communication is down with a peer.  Likely a cluster should have a backdoor com channel to help indicate inter node network failures, since the DB and the Repos are shared in this scenario, either could easily be used for the back door channel (CAF is using the repos: All-Projects:refs/meta/masters/node).
 
+Spearce has a solution to #4
 
 = Multi Site Masters with Separate Backends =
 
