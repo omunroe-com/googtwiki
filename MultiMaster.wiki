@@ -8,17 +8,19 @@ on how to move Gerrit in that direction.
 This is the simplest case for Gerrit multi master, so it is likely the first step 
 which is needed by most other ideas is to support a very simple master/master installation of Gerrit where both (or all if more than 2) masters share a common filesystem backend (likely a high end NFS server) and a common db.
 
-Two issues were identified here which need to be resolved 
-before this is possible:  
+Four issues have been identified here which need to be resolved before this is possible:  
 
   # Cache coherency and 
   # Submit conflict resolution
   # Mirror/Slave Replication
+  # User sessions
 
-A naive approach to #1 is to simply use really short cache times, but this sort of defeats the purpose of caching.  To solve this properly, some sort of eviction protocol will need to be developed for masters to inform their peers of a needed eviction.  
+A naive approach to #1 is to simply use really short cache times, but this sort of defeats the purpose of caching.  To solve this properly, some sort of eviction protocol will need to be developed for masters to inform their peers of a needed eviction (CAF has a plugin it will publish this week to do this part).
 
 #2 could be easily solved by manually determining a submit master and later 
-upgrading to some sort of voting mechanism among peer masters to choose a submit master, these would be incremental approaches.  
+upgrading to some sort of voting mechanism among peer masters to choose a submit master, these would be incremental approaches.  The issue is that each server runs a plugin queue and can therefor can attempt to merge changes to the same branches at the same time resulting in "failed to lock" errors which will leave failed to merge messages on changes.  If the same change makes it into multiple queues, might it also cause issues by attempting to being merged twice?   If a peer goes down, might its queue be the only holder of certain changes which then will be missed until a restart of some server?
+
+#3 can be solved similarly to #2, select a replication master.  The replication master is responsible to rerun full replication on startup and anytime a master goes down (since it may have currently been replicating something).  Otherwise, masters can replicate as they would normally (as a single master) as they cause ref updates.
 
 A simple ssh connection between peers was deemed sufficient in most cases to accomplish both #1 and #2.
 
