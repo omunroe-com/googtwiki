@@ -15,7 +15,7 @@ Four issues have been identified here which need to be resolved before this is p
   # Mirror/Slave Replication
   # User sessions
 
-A naive approach to #1 is to simply use really short cache times, but this sort of defeats the purpose of caching.  To solve this properly, some sort of eviction protocol will need to be developed for masters to inform their peers of a needed eviction (CAF has a plugin it will publish this week to do this part).
+A naive approach to #1 is to simply use really short cache times, but this sort of defeats the purpose of caching.  To solve this properly, some sort of eviction protocol will need to be developed for masters to inform their peers of a needed eviction (a plugin is up for [https://gerrit-review.googlesource.com/#/c/37460/1 review] which does this using UDP).
 
 #2 could be easily solved by manually determining a submit master and later 
 upgrading to some sort of voting mechanism among peer masters to choose a submit master, these would be incremental approaches.  The issue is that each server runs a plugin queue and can therefor can attempt to merge changes to the same branches at the same time resulting in "failed to lock" errors which will leave failed to merge messages on changes.  If the same change makes it into multiple queues, might it also cause issues by attempting to being merged twice?   If a peer goes down, might its queue be the only holder of certain changes which then will be missed until a restart of some server?
