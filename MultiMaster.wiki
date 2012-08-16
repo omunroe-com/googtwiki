@@ -26,6 +26,9 @@ A simple ssh connection between peers was deemed sufficient in most cases to acc
 
 Spearce has a solution to #4
 
+A [https://groups.google.com/d/msg/repo-discuss/ZIIuBaCz9Jc/ZTQGpuy_Y1MJ thread] about some what is required for this setup to work well.
+
+
 = Multi Site Masters with Separate Backends =
 
 The main additional problem with separate backends is: resolving ref updates in a globally safe way.  In Google’s implementation, this is solved by placing the refs in !BigTable.  !ZooKeeper seemed like a good free/open source alternative since it is Java based and under the Apache license.  The other piece to solve is moving object data across sites, it was suggested that !ZooKeeper would likely be involved in helping to coordinate this, but details were not really discussed. 
