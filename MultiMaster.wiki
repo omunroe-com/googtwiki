@@ -33,6 +33,8 @@ A [https://groups.google.com/d/msg/repo-discuss/ZIIuBaCz9Jc/ZTQGpuy_Y1MJ thread]
 
 The main additional problem with separate backends is: resolving ref updates in a globally safe way.  In Google’s implementation, this is solved by placing the refs in !BigTable.  !ZooKeeper seemed like a good free/open source alternative since it is Java based and under the Apache license.  The other piece to solve is moving object data across sites, it was suggested that !ZooKeeper would likely be involved in helping to coordinate this, but details were not really discussed. 
 
+A plugin for !ZooKeeper ref-db is up for [https://gerrit-review.googlesource.com/#/c/37460/1 review].
+
 = Distributed FS =
 
 Finally, it was felt that once multi sites were conquered, that a distributed filesystem may eventually be needed to scale the git repos effectively, Hadoop DFS was proposed for this.
