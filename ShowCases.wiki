@@ -8,7 +8,7 @@
  * [http://review.cyanogenmod.org Cyanogen]
 
 ==== Other ====
-
+ * [http://gerrit.chromium.org Chromium]
  * [https://git.eclipse.org Eclipse]
  * [https://codereview.qt-project.org QT]
  * [https://gerrit.wikimedia.org Wikimedia]
@@ -17,11 +17,11 @@
  * [http://review.source.kitware.com Kitware ]
  * [https://gerrit.libreoffice.org LibreOffice ]
 
- * [ ]
- * [ ]
- * [ ]
- * [ ]
- * [ ]
+ * [http://gerrit.openafs.org OpenAFS]
+ * [http://gerrit.rockbox.org RockBox]
+ * [https://codereview.scilab.org ScilLab]
+ * [http://gerrit.ovirt.org oVirt]
+ * [https://review.typo3.org Typo3]
  * [ ]
  * [ ]
  * [ ]
