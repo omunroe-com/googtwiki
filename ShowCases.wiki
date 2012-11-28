@@ -1,13 +1,13 @@
-# Gerrit Installations in the wild
+= Gerrit Installations in the Wild =
 
-= Open Source Projects =
+== Open Source Projects ==
 
-== Android ==
+==== Android ====
 
  * [https://android-review.googlesource.com Where it all began]
  * [http://review.cyanogenmod.org Cyanogen]
 
-== Other ==
+==== Other ====
 
  * [https://git.eclipse.org Eclipse]
  * [https://codereview.qt-project.org QT]
