@@ -1,0 +1,13 @@
+# Gerrit Installations in the wild
+
+= Open Source Proejcts =
+
+== Android ==
+
+* [ Where it all began]
+* [ Cyanogen]
+
+== Other ==
+
+* [https://codereview.qt-project.org QT]
+* [https://gerrit.wikimedia.org Wikimedia]
