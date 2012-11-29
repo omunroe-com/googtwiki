@@ -18,6 +18,8 @@ You have recognized issues needing to be addressed and guided your peers towards
 
 === Feather ===
 
+You have transcended beyond the bare mechanics of reviewing.  Where others read, you meditate.  Where others comment on code, you add your yin to its yang.  You are no longer a reviewer, but an ethereal wisp that dwells within Gerrit.
+
 === Tail ===
 
 === Beak ===
