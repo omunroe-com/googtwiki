@@ -1,3 +1,5 @@
+#summary Links to some sites using Gerrit
+
 = Gerrit Installations in the Wild =
 
 == Open Source Projects ==
