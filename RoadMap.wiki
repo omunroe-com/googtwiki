@@ -7,3 +7,7 @@ There are many ideas suggested, and discussions which lead to decisions about th
 = Architecture =
 
  * The REST API is viewed as the longterm stable approach for RPCs with the Gerrit Server.  At this point new UI elements and new ssh commands should be developed against it.  If a new service is created, it should extend the current REST API or implement new pieces.
+
+ * The hooks will eventually be moved to plugins.
+
+ * The Database will eventually be removed from Gerrit.  Authoritative data will mostly be pushed into the project repositories.  An indexing service such as Lucene will be used to provide fast access to data.  While this is the long term plan, some pieces have already been moved out of the DB and into the repos, for example project configuration and ACLs.   Newer features are expected to take a similar approach when possible.
