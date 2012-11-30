@@ -14,4 +14,6 @@ There are many ideas suggested, and discussions which lead to decisions about th
 
  ** New user preferences should be placed in a (yet to be born) repo named All-Users.  Each users preferences will live in a gitconfig style file under a reference named refs/meta/users/xxx/accountid where xxx is accountId mod 1000.  Since users shouldn't be able to access other users' refs, this structure can be hidden from them and they should be able to access their refs via refs/heads/master
 
+ ** Groups should probably gain a similar All-Groups repo. The membership file could live there.
+
  * Authentication will eventually be moved entirely to plugins.  Much work has already been done on this.
