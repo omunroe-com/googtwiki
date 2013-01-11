@@ -1,6 +1,6 @@
 #summary Scaling Gerrit Installations
 
-====== Master ======
+==== Master ====
 
 The first step to scaling is to scale your master server.  Some easy, but pricey ways to scale your master are:
 
@@ -9,15 +9,15 @@ The first step to scaling is to scale your master server.  Some easy, but pricey
   * Ensure fast disk IO, SSDs help
   * Network, I suspect that most large installs use 10Gb ethernet
 
-====== Mirrors/Slaves ======
+==== Mirrors/Slaves ====
 
 Once you have a decent master, it is probably worth adding either some git mirrors (if you do not need ACLs on your repos), or Gerrit slaves to help offload much of your read only requests.  Mirrors/Slaves can also help reduce LAN and WAN traffic if you place them nearer your users/build hosts.  Some of the larger installations have at least 7 of these.
 
-====== Multi - Master ======
+==== Multi - Master ====
 
 Gerrit cannot yet be run in multi master mode, at least not the open source version.  The gerrit-review site does currently run in multi master mode, but it does not use the same code base as the open source version.  This however means that we are mostly aware of what it will take to make Gerrit support MultiMaster.  Any contributions in this direction should help make this a reality more quickly.
 
-====== Issues ======
+==== Issues ====
 
 As you scale, you will always run into some issues.  Depending on your specific setup those issues may be very different from what other people are running into.  Some of the specific axes which people may or may not need to scale on are:
 
@@ -32,24 +32,24 @@ As you scale, you will always run into some issues.  Depending on your specific 
 
 
 
-==== Jetty ====
+===== Jetty =====
 
 The default built in container which Gerrit uses is Jetty.  Some installations have had serious "Failed to dispatch" errors which lead to 100%CPU and filled up logs requiring a server reboot.  One way to workaround this issue appears to be using [https://gerrit-review.googlesource.com/#/c/35010/6/Documentation/install-tomcat.txt Tomcat] instead to replace Jetty.  Another solution is to set http.maxqueued = 0 if you are not too concerned with DDOS attacks.
 
 
-==== Repo Syncs ====
+===== Repo Syncs =====
 
 With beefier servers, many people have [http://groups.google.com/group/repo-discuss/browse_thread/thread/c8f003f2247d7157/ad6915f5558df8f5?lnk=gst&q=repo+sync+error#ad6915f5558df8f5 seen] channel master issues with ssh.  You may set GIT_SSH to avoid these:
 
   export GIT_SSH=$(which ssh) 
 
 
-==== Java GC ====
+===== Java GC =====
 
 If you overload your server too much, eventually java gc may block.  Large blocking times of over 1 min can be seen under extreme loads.  Limiting the ssh max threads can help prevent this.  Another solution may be to tweak the jvm gc parameters (I have not had luck with that).
 
 
-==== Replication ====
+===== Replication =====
 
 There are many scalibility issues which can plague replication, most are related to high ref counts, those are not specifically mentioned here, so you will likely need to first be familiar with the "High Ref Counts" section to make replication run smoothly.
 
@@ -61,7 +61,7 @@ Jsch has threading issues which seem to serialize replication even across worker
 
 If you have a fairly smooth replication setup, your replication can start running into contention and failing with "Failed to Lock" errors in your logs.  This can happen when 2 separate threads attempt to replicate the same project/branch combination.  The Gerrit replication code does not yet retry these failures and it can result in your mirrors being out of date.
 
-==== High Ref Counts ====
+===== High Ref Counts =====
 
 High ref counts can have impacts in many places in the git/jgit/Gerrit stacks.  There are many ongoing fixes and tweaks to alleviated many of these problems, but some of them still remain.  Some can be "unofficially" worked around.
 
@@ -92,7 +92,7 @@ If you have android repositories, you likely use around 400 of them.  Cross proj
 == ACLS ==
 
 
-==== Disk Space ====
+===== Disk Space =====
 
 Installations which do not have enough spare disk space for their repos can run into problems easily.  Be aware that git repos contain highly compressed data and that at times this data may need to be uncompressed.  It is easy to underestimate the temporary needs of repositories because git is so good at compressing this data.  However, minor changes can cause repositories to "explode" so it is good to plan for this and leave a lot of free space for this to never be an issue.  This is particularly important for those using SSDs where they might be more likely to skimp on space.
 
@@ -123,6 +123,6 @@ Currently, Gerrit may leave behind some temporary files in your git repos when i
 
 The temporary unjared war files in here can build up.  (This has been move to review_site/tmp in Gerrit 2.5+)
 
-==== hooks ====
+===== hooks =====
 
 Servers with lots of RAM are succeptible to slow forks which can delay each hook invocation quite a bit.  When java uses over 10G of memory, it may add at least a second to each hook invocation.  Using java 7 seems to avoid this problem and makes hooks blazingly fast again.
