@@ -120,3 +120,7 @@ Currently, Gerrit may leave behind some temporary files in your git repos when i
 ===== ~/.gerritcodereview =====
 
 The temporary unjared war files in here can build up.  (This has been move to review_site/tmp in Gerrit 2.5+)
+
+=== hooks ===
+
+Servers with lots of RAM are succeptible to slow forks which can delay each hook invocation quite a bit.  When java uses over 10G of memory, it may add at least a second to each hook invocation.  Using java 7 seems to avoid this problem and makes hooks blazingly fast again.
