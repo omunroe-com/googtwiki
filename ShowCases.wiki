@@ -21,6 +21,6 @@
 
  * [http://gerrit.openafs.org OpenAFS]
  * [http://gerrit.rockbox.org RockBox]
- * [https://codereview.scilab.org ScilLab]
+ * [https://codereview.scilab.org SciLab]
  * [http://gerrit.ovirt.org oVirt]
  * [https://review.typo3.org Typo3]
