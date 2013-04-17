@@ -13,7 +13,7 @@
 ==== Other ====
  * [http://gerrit.chromium.org Chromium]
  * [https://git.eclipse.org/r/ Eclipse]
- * [https://codereview.qt-project.org QT]
+ * [https://codereview.qt-project.org Qt]
  * [https://gerrit.wikimedia.org Wikimedia]
  * [https://review.openstack.org openstack]
  * [http://review.couchbase.org Couchbase]
