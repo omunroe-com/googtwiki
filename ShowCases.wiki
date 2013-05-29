@@ -8,7 +8,7 @@
 
  * [https://android-review.googlesource.com Where it all began]
  * [http://review.cyanogenmod.org Cyanogen]
- * [http://gerrit.sudoservers.com AOKP] 
+ * [http://gerrit.aokp.co AOKP] 
 
 ==== Other ====
 
