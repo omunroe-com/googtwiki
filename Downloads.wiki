@@ -1,0 +1,1 @@
+[http://gerrit-releases.commondatastorage.googleapis.com/gerrit-2.6.war 2.6]
