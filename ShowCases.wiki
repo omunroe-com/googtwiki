@@ -12,7 +12,7 @@
 
 ==== Other ====
 
- * [http://chromium-review.googlesource.org Chromium]
+ * [http://chromium-review.googlesource.com Chromium]
  * [http://review.couchbase.org Couchbase] 
  * [https://git.eclipse.org/r/ Eclipse]
  * [http://gerrithub.io GerritHub]
