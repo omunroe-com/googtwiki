@@ -75,7 +75,7 @@ Current versions (prior to git 1.7.11) will use an [http://marc.info/?l=git&m=13
 
 == git ==
 
-Suggest to your users that they use the latest git possible, many of the older versions (which are still the defaults on many distros) have severs problems with high ref counts.  Particularly [http://marc.info/?l=git&m=131552810309538&w=2 bad] versions are between 1.7.4.1 and 1.7.7.  Git 1.8.1 seems to have some speedups in fetches of high ref counts compared to even 1.7.8.
+Suggest to your users that they use the latest git possible, many of the older versions (which are still the defaults on many distros) have severe problems with high ref counts.  Particularly [http://marc.info/?l=git&m=131552810309538&w=2 bad] versions are between 1.7.4.1 and 1.7.7.  Git 1.8.1 seems to have some speedups in fetches of high ref counts compared to even 1.7.8.
 
 == jgit ==
 
