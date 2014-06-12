@@ -9,6 +9,8 @@ The purpose of this page is to keep track of them and prevent the risk of them b
   * [OutstandingTopics#Web_Session_broken_in_master web-session-regression]
   * [OutstandingTopics#Pluggable_authentication_backend auth-backends-HttpAuthProtocol]
 
+-----
+
 =Web Session broken in master=
 
 Since the merge of [https://gerrit-review.googlesource.com/#/c/48697/ PluggableWebSessionChange] the Gerrit Guice session management is seriously broken. 
