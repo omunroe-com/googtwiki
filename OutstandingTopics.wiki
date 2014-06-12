@@ -31,6 +31,17 @@ These changes would allow Gerrit to be more extensible, avoiding further growth 
   * Status: review started, partially merged
   * Issues: after having merged part of it, the review is now stuck. Needs Shawn attention as the first attempt to merge it broke the Gerrit authentication.
 
+==On-Line edit==
+
+Allows to perform small edits on the files included in an existing Gerrit change in order to submit a new patch-set. Currently it is already possible on the commit message but not on the code.
+
+The overall user-experience is nice and is provides a very quick and easy shortcut for avoiding to go through the check-out / modify / commit --amend / push workflow for small changes. GitHub provides already this feature and is really nice!
+
+  * Gerrit changes: [https://gerrit-review.googlesource.com/#/q/status:open+project:gerrit+branch:master+topic:inline-2 changes]
+  * Owner: [https://gerrit-review.googlesource.com/#/q/owner:%22David+Ostrovsky+%253CDavid.Ostrovsky%2540gmx.de%253E%22+status:open DavidO]
+  * Status: second version of the on-line edit. Demoed at the last Gerrit User Summit 2014 @Google.
+  * Issues: Nobody really started looking at it yet. Currently some of the changes on the topic have merge conflicts.
+
 ==Scripting plugins==
 
 Introduce the ability to load scripts written in languages different than Java (e.g. Groovy, Scala and potentially any other language that can run on the JVM) and use them as Gerrit plugins for extending Gerrit functionalities.
