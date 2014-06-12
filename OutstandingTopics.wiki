@@ -25,7 +25,7 @@ Introduce the ability to load scripts written in languages different than Java (
 
 Currently the plugin-type is an hardcoded Enum that allows only "plugin", "extension" and "javascript" types. Once the changes will be reviewed and merged, Gerrit would potentially support any type of plugin that declares to support a specific file or directory w/ extension.
 
-For an overview on Gerrit Scripting Plugins, see the [http://www.slideshare.net/lucamilanesio/gerrit-code-review-how-to-script-a-plugin-with-scala-and-groovy SlideShare] slide-deck presented at the Gerrit User Summit 2014 @GooglePlex.
+For an overview on Gerrit Scripting Plugins, see the [http://www.slideshare.net/lucamilanesio/gerrit-code-review-how-to-script-a-plugin-with-scala-and-groovy SlideShare] slide-deck presented at the Gerrit User Summit 2014 @Google.
 
   * Gerrit changes: [https://gerrit-review.googlesource.com/#/q/status:open+topic:scripting-reloaded changes]
   * Owner: [https://gerrit-review.googlesource.com/#/q/owner:%22Luca+Milanesio+%253Cluca.milanesio%2540gmail.com%253E%22 Luca]
