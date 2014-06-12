@@ -39,4 +39,4 @@ The challenges are actually on where the secure.config is used: all over the pla
   * Gerrit changes: [https://gerrit-review.googlesource.com/#/q/status:open+topic:secure-store changes]
   * Owner: [https://gerrit-review.googlesource.com/#/q/owner:%22Dariusz+%25C5%2581uksza%22+status:open Dariusz]
   * Status: review started
-  * Issues: positive and negative feedback on the change. Needs rethinking / reworking possibly to a much simpler approach.
+  * Issues: positive and negative feedbacks on the change. Needs rethinking / reworking possibly to a much simpler approach.
