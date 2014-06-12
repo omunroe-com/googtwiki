@@ -8,8 +8,8 @@ The purpose of this page is to keep track of them and prevent the risk of them b
 
 =Topics=
 
-* [OutstandingTopics#Web-Session-broken-in-master web-session-regression]
-* [OutstandingTopics#Pluggable-authentication-backend auth-backends-HttpAuthProtocol]
+  * [OutstandingTopics#Web-Session-broken-in-master web-session-regression]
+  * [OutstandingTopics#Pluggable-authentication-backend auth-backends-HttpAuthProtocol]
 
 ==Web Session broken in master==
 
