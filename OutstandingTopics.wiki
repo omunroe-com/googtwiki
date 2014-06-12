@@ -28,4 +28,15 @@ Currently the plugin-type is an hardcoded Enum that allows only "plugin", "exten
   * Gerrit changes: [https://gerrit-review.googlesource.com/#/q/status:open+topic:scripting-reloaded changes]
   * Owner: [https://gerrit-review.googlesource.com/#/q/owner:%22Luca+Milanesio+%253Cluca.milanesio%2540gmail.com%253E%22 Luca]
   * Status: review started, partially merged
-  * Issues: after having merged part of it, the review is now stuck. Needs Shawn attention as we are coming to the part of refactoring the current JarScanner in order to scan things that are not Jars.
+  * Issues: after having merged part of it, the review is now stuck. Needs Shawn attention as we are coming to the part of refactoring the current Jar Scanner in order to scan things that are not Jars.
+
+==Secure Store==
+
+Makes the Gerrit secure.config more secure by encrypting its values. This change aims to make the security system applied to the secure.config more generic and pluggable. Potentially the key-value pairs could be stored in an external security vault and not even persisted in the filesystem.
+
+The challenges are actually on where the secure.config is used: all over the place in Gerrit whenever a @GerritServerConfig annotation is present. Additionally when the config gets created the plugin infrastructure and loader are not available: the pluggability then needs to use another discovery system.
+
+  * Gerrit changes: [https://gerrit-review.googlesource.com/#/q/status:open+topic:secure-store changes]
+  * Owner: [https://gerrit-review.googlesource.com/#/q/owner:%22Dariusz+%25C5%2581uksza%22+status:open Dariusz]
+  * Status: review started
+  * Issues: positive and negative feedback on the change. Needs rethinking / reworking possibly to a much simpler approach.
