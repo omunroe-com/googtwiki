@@ -8,6 +8,18 @@ The purpose of this page is to keep track of them and prevent the risk of them b
 
 =Topics=
 
+==WebSession broken in Gerrit 2.10-SNAPSHOT / master==
+
+Since the merge of [https://gerrit-review.googlesource.com/#/c/48697/ Pluggable Web Session Change] the Gerrit Guice session management is seriously broken. 
+The problem is the introduction of HttpServletResponse in the [https://gerrit.googlesource.com/gerrit/+/refs/heads/master/gerrit-httpd/src/main/java/com/google/gerrit/httpd/H2CacheBasedWebSession.java H2 implementation] which is not available (and thus set to null) when the Guice context is propagated to background processes.
+
+This needs *URGENT ATTENTION* as the current Gerrit master branch would not be suitable for production use or not good enough for getting a stable-2.10 branch.
+
+  * Gerrit changes: [status:open project:gerrit branch:master topic:web-session-regression changes]
+  * Owner: [https://gerrit-review.googlesource.com/#/q/owner:%22David+Ostrovsky+%253CDavid.Ostrovsky%2540gmx.de%253E%22+status:open DavidO]
+  * Status: review started
+  * Issues: needs an extra patch on Guice, currently on master but not released yet. It would be helpful if some Google'rs could push this through the internal channels. The problem is as well on the mutability of HttpServletRequest cookies when propagating Guice request context.
+
 ==Pluggable authentication-backend==
 
 Replace the current Gerrit authentication infrastructure, mainly based on mega-switch/case with the list of protocols/methods supported, with a new plugin-based authentication back-end. 
