@@ -46,8 +46,8 @@ The overall user-experience is nice and is provides a very quick and easy shortc
 
   * Gerrit changes: [https://gerrit-review.googlesource.com/#/q/status:open+project:gerrit+branch:master+topic:inline-2 changes]
   * Owner: [https://gerrit-review.googlesource.com/#/q/owner:%22David+Ostrovsky+%253CDavid.Ostrovsky%2540gmx.de%253E%22+status:open DavidO]
-  * Status: second version of the on-line edit. Demoed at the last Gerrit User Summit 2014 @Google.
-  * Issues: Nobody really started looking at it yet. Currently some of the changes on the topic have merge conflicts.
+  * Status: second version of the on-line edit. Demoed at the last Gerrit User Summit 2014 @Google. Review should be finalized
+  * Issues: The major parts of the series were reviewed and tested by Björn Pedersen, David P., Shawn and Martin. All comments were addressed. Particularly after Shawn comment the series was substantially redesigned: RevisionEdits were evacuated out from GET /changes<id>/detail request and put into its own request.
 
 =Scripting plugins=
 
