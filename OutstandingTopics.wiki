@@ -1,6 +1,6 @@
 =Overview=
 
-Following a  [discussion on the mailing list|https://groups.google.com/forum/#!topic/repo-discuss/qKz7AtZDlC4] we decided to create a summary page containing the list of outstanding topics that are currently under review and deserve a particular attention for their nature.
+Following a   [https://groups.google.com/forum/#!topic/repo-discuss/qKz7AtZDlC4 discussion on the mailing list] we decided to create a summary page containing the list of outstanding topics that are currently under review and deserve a particular attention for their nature.
 
 The purpose of this page is to keep track of them and prevent the risk of them being forgotten in the Gerrit changes backlog. The topics listed here are either related to the Gerrit architecture or to some fixes to severe bugs that need particular attention and time for being reviewed and merged.
 
