@@ -8,9 +8,9 @@ The purpose of this page is to keep track of them and prevent the risk of them b
 
 =Topics=
 
-==WebSession broken in Gerrit 2.10-SNAPSHOT / master==
+==Web Session broken in Gerrit 2.10-SNAPSHOT / master==
 
-Since the merge of [https://gerrit-review.googlesource.com/#/c/48697/ Pluggable Web Session Change] the Gerrit Guice session management is seriously broken. 
+Since the merge of [https://gerrit-review.googlesource.com/#/c/48697/ PluggableWebSessionChange] the Gerrit Guice session management is seriously broken. 
 The problem is the introduction of HttpServletResponse in the [https://gerrit.googlesource.com/gerrit/+/refs/heads/master/gerrit-httpd/src/main/java/com/google/gerrit/httpd/H2CacheBasedWebSession.java H2 implementation] which is not available (and thus set to null) when the Guice context is propagated to background processes.
 
 This needs *URGENT ATTENTION* as the current Gerrit master branch would not be suitable for production use or not good enough for getting a stable-2.10 branch.
