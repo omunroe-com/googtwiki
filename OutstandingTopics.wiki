@@ -6,12 +6,10 @@ Following a   [https://groups.google.com/forum/#!topic/repo-discuss/qKz7AtZDlC4 
 
 The purpose of this page is to keep track of them and prevent the risk of them being forgotten in the Gerrit changes backlog. The topics listed here are either related to the Gerrit architecture or to some fixes to severe bugs that need particular attention and time for being reviewed and merged.
 
-=Topics=
-
   * [OutstandingTopics#Web-Session-broken-in-master web-session-regression]
   * [OutstandingTopics#Pluggable-authentication-backend auth-backends-HttpAuthProtocol]
 
-==Web Session broken in master==
+=Web Session broken in master=
 
 Since the merge of [https://gerrit-review.googlesource.com/#/c/48697/ PluggableWebSessionChange] the Gerrit Guice session management is seriously broken. 
 The problem is the introduction of `HttpServletResponse` in the [https://gerrit.googlesource.com/gerrit/+/refs/heads/master/gerrit-httpd/src/main/java/com/google/gerrit/httpd/H2CacheBasedWebSession.java H2 implementation] which is not available (and thus set to null) when the Guice context is propagated to background processes.
@@ -23,7 +21,7 @@ This needs *URGENT ATTENTION* as the current Gerrit master branch would not be s
   * Status: review started
   * Issues: needs an extra patch on Guice, currently on master but not released yet. It would be helpful if some Google'rs could push this through the internal channels. The problem is as well on the mutability of `HttpServletRequest` cookies when propagating Guice request context.
 
-==Pluggable authentication backend==
+=Pluggable authentication backend=
 
 Replace the current Gerrit authentication infrastructure, mainly based on mega-switch/case with the list of protocols/methods supported, with a new plugin-based authentication back-end. 
 
@@ -34,7 +32,7 @@ These changes would allow Gerrit to be more extensible, avoiding further growth 
   * Status: review started, partially merged
   * Issues: after having merged part of it, the review is now stuck. Needs Shawn attention as the first attempt to merge it broke the Gerrit authentication.
 
-==On-Line edit==
+=On-Line edit=
 
 Allows to perform small edits on the files included in an existing Gerrit change in order to submit a new patch-set. Currently it is already possible on the commit message but not on the code.
 
@@ -45,7 +43,7 @@ The overall user-experience is nice and is provides a very quick and easy shortc
   * Status: second version of the on-line edit. Demoed at the last Gerrit User Summit 2014 @Google.
   * Issues: Nobody really started looking at it yet. Currently some of the changes on the topic have merge conflicts.
 
-==Scripting plugins==
+=Scripting plugins=
 
 Introduce the ability to load scripts written in languages different than Java (e.g. Groovy, Scala and potentially any other language that can run on the JVM) and use them as Gerrit plugins for extending Gerrit functionalities.
 
@@ -58,7 +56,7 @@ For an overview on Gerrit Scripting Plugins, see the [http://www.slideshare.net/
   * Status: review started, partially merged
   * Issues: after having merged part of it, the review is now stuck. Needs Shawn attention as we are coming to the part of refactoring the current Jar Scanner in order to scan things that are not Jars.
 
-==Secure Store==
+=Secure Store=
 
 Makes the Gerrit secure.config more secure by encrypting its values. This change aims to make the security system applied to the secure.config more generic and pluggable. Potentially the key-value pairs could be stored in an external security vault and not even persisted in the filesystem.
 
