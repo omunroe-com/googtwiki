@@ -10,9 +10,22 @@ The purpose of this page is to keep track of them and prevent the risk of them b
 
 ==Pluggable authentication-backend==
 
-Purpose of this topic is to replace the current Gerrit authentication infrastructure, mainly based on mega-switch/case with the list of protocols/methods supported, with a new plugin-based authentication back-end. 
+Replace the current Gerrit authentication infrastructure, mainly based on mega-switch/case with the list of protocols/methods supported, with a new plugin-based authentication back-end. 
+
+These changes would allow Gerrit to be more extensible, avoiding further growth of the mega-switch/case all over the code and support the ability to load user plugins to support other authentication systems in the same way that Gerrit groups have been refactored years ago.
 
   * Gerrit changes: [https://gerrit-review.googlesource.com/#/q/status:open+project:gerrit+branch:master+topic:auth-backends-HttpAuthProtocol changes]
   * Owner: [https://gerrit-review.googlesource.com/#/q/owner:%22Dariusz+%25C5%2581uksza%22+status:open Dariusz]
   * Status: review started, partially merged
   * Issues: after having merged part of it, the review is now stuck. Needs Shawn attention as the first attempt to merge it broke the Gerrit authentication.
+
+==Scripting plugins==
+
+Introduce the ability to load scripts written in languages different than Java (e.g. Groovy, Scala and potentially any other language that can run on the JVM) and use them as Gerrit plugins for extending Gerrit functionalities.
+
+Currently the plugin-type is an hardcoded Enum that allows only "plugin", "extension" and "javascript" types. Once the changes will be reviewed and merged, Gerrit would potentially support any type of plugin that declares to support a specific file or directory w/ extension.
+
+  * Gerrit changes: [https://gerrit-review.googlesource.com/#/q/status:open+topic:scripting-reloaded changes]
+  * Owner: [https://gerrit-review.googlesource.com/#/q/owner:%22Luca+Milanesio+%253Cluca.milanesio%2540gmail.com%253E%22 Luca]
+  * Status: review started, partially merged
+  * Issues: after having merged part of it, the review is now stuck. Needs Shawn attention as we are coming to the part of refactoring the current JarScanner in order to scan things that are not Jars.
