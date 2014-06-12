@@ -8,7 +8,8 @@ The purpose of this page is to keep track of them and prevent the risk of them b
 
 =Topics=
 
-* [OutstandingTopics#Web-Session-broken-in-master WebSessionBrokenInMaster]
+* [OutstandingTopics#Web-Session-broken-in-master web-session-regression]
+* [OutstandingTopics#Pluggable-authentication-backend auth-backends-HttpAuthProtocol]
 
 ==Web Session broken in master==
 
@@ -22,7 +23,7 @@ This needs *URGENT ATTENTION* as the current Gerrit master branch would not be s
   * Status: review started
   * Issues: needs an extra patch on Guice, currently on master but not released yet. It would be helpful if some Google'rs could push this through the internal channels. The problem is as well on the mutability of `HttpServletRequest` cookies when propagating Guice request context.
 
-==Pluggable authentication-backend==
+==Pluggable authentication backend==
 
 Replace the current Gerrit authentication infrastructure, mainly based on mega-switch/case with the list of protocols/methods supported, with a new plugin-based authentication back-end. 
 
