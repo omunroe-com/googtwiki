@@ -1,3 +1,5 @@
+#summary Executive summary of the list of major Gerrit topics under review and temporarily blocked
+
 =Overview=
 
 Following a   [https://groups.google.com/forum/#!topic/repo-discuss/qKz7AtZDlC4 discussion on the mailing list] we decided to create a summary page containing the list of outstanding topics that are currently under review and deserve a particular attention for their nature.
@@ -10,10 +12,7 @@ The purpose of this page is to keep track of them and prevent the risk of them b
 
 Purpose of this topic is to replace the current Gerrit authentication infrastructure, mainly based on mega-switch/case with the list of protocols/methods supported, with a new plugin-based authentication back-end. 
 
-* Gerrit changes: [https://gerrit-review.googlesource.com/#/q/status:open+project:gerrit+branch:master+topic:auth-backends-HttpAuthProtocol changes]
-
-* Owner: [https://gerrit-review.googlesource.com/#/q/owner:%22Dariusz+%25C5%2581uksza%22+status:open Dariusz]
-
-* Status: review started, partially merged
-
-* Issues: after having merged part of it, the review is now stuck. Needs Shawn attention as the first attempt to merge it broke the Gerrit authentication.
+  * Gerrit changes: [https://gerrit-review.googlesource.com/#/q/status:open+project:gerrit+branch:master+topic:auth-backends-HttpAuthProtocol changes]
+  * Owner: [https://gerrit-review.googlesource.com/#/q/owner:%22Dariusz+%25C5%2581uksza%22+status:open Dariusz]
+  * Status: review started, partially merged
+  * Issues: after having merged part of it, the review is now stuck. Needs Shawn attention as the first attempt to merge it broke the Gerrit authentication.
