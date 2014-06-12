@@ -10,6 +10,5 @@ The purpose of this page is to keep track of them and prevent the risk of them b
 
 Purpose of this topic is to replace the current Gerrit authentication infrastructure, mainly based on mega-switch/case with the list of protocols/methods supported, with a new plugin-based authentication back-end. 
 
-|| Gerrit changes || 
-[https://gerrit-review.googlesource.com/#/q/status:open+project:gerrit+branch:master+topic:auth-backends-HttpAuthProtocol changes] ||
-|| Owner || [https://gerrit-review.googlesource.com/#/q/owner:%22Dariusz+%25C5%2581uksza%22+status:open Dariusz] ||
+* Gerrit changes: [https://gerrit-review.googlesource.com/#/q/status:open+project:gerrit+branch:master+topic:auth-backends-HttpAuthProtocol changes]
+* Owner: [https://gerrit-review.googlesource.com/#/q/owner:%22Dariusz+%25C5%2581uksza%22+status:open Dariusz]
