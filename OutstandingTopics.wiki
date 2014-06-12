@@ -12,6 +12,7 @@ Currently outstanding topics are:
   # [OutstandingTopics#On-Line_edit inline-2]
   # [OutstandingTopics#Scripting_plugins scripting-reloaded]
   # [OutstandingTopics#Secure_Store secure-store]
+  # [OutstandingTopics#Angular_Gerrit angular-gerrit-integration]
 
 -----
 
@@ -72,3 +73,14 @@ The challenges are actually on where the secure.config is used: all over the pla
   * Owner: [https://gerrit-review.googlesource.com/#/q/owner:%22Dariusz+%25C5%2581uksza%22+status:open Dariusz]
   * Status: review started
   * Issues: positive and negative feedbacks on the change. Needs rethinking / reworking possibly to a much simpler approach.
+
+=Angular Gerrit=
+
+Dariusz presented at the Gerrit User a prototype for leveraging the REST-API through an AngularJS UX. It has been published to GitHub at https://github.com/dluksza/angular-gerrit.
+
+In order to use the Gerrit-Angular integration a set of changes in the Plugin infrastructure are needed and have been uploaded for review.
+
+  * Gerrit changes: [https://gerrit-review.googlesource.com/#/q/status:open+topic:angular-gerrit-integration changes]
+  * Owner: [https://gerrit-review.googlesource.com/#/q/owner:%22Dariusz+%25C5%2581uksza%22+status:open Dariusz]
+  * Status: changes submitted, topic created.
+  * Issues: None at the moment.
