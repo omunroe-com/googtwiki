@@ -6,8 +6,8 @@ Following a   [https://groups.google.com/forum/#!topic/repo-discuss/qKz7AtZDlC4 
 
 The purpose of this page is to keep track of them and prevent the risk of them being forgotten in the Gerrit changes backlog. The topics listed here are either related to the Gerrit architecture or to some fixes to severe bugs that need particular attention and time for being reviewed and merged.
 
-  * [OutstandingTopics#Web-Session-broken-in-master web-session-regression]
-  * [OutstandingTopics#Pluggable-authentication-backend auth-backends-HttpAuthProtocol]
+  * [OutstandingTopics#Web_Session_broken_in_master web-session-regression]
+  * [OutstandingTopics#Pluggable_authentication_backend auth-backends-HttpAuthProtocol]
 
 =Web Session broken in master=
 
