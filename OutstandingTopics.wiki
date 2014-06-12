@@ -8,6 +8,9 @@ The purpose of this page is to keep track of them and prevent the risk of them b
 
   * [OutstandingTopics#Web_Session_broken_in_master web-session-regression]
   * [OutstandingTopics#Pluggable_authentication_backend auth-backends-HttpAuthProtocol]
+  * [OutstandingTopics#On-Line_edit inline-2]
+  * [OutstandingTopics#Scripting_plugins scripting-reloaded]
+  * [OutstandingTopics#Secure_Store secure-store]
 
 -----
 
