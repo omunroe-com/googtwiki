@@ -20,7 +20,7 @@ Currently outstanding topics are:
 
 This has the *HIGHEST PRIORITY*.
 
-Transaction management in GWTORM is only implemented for Google's `Megastore` database (`NoSQL` dialect).
+Transaction management in `GWTORM` is only implemented for Google's `Megastore` database (`NoSQL` dialect).
 
 For Jdbc dialects the methods: `beginTransaction()`, `commit()` and `rollback()` are no-ops:
 `java.sql.Connection` is opened in `autoCommit=true` mode, which means that all executed
