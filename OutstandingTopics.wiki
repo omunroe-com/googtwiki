@@ -18,7 +18,7 @@ Currently outstanding topics are:
 
 =Data loss and corruption=
 
-This needs  *HIGHEST PRIORITY*.
+This has  *HIGHEST PRIORITY*.
 
 Transaction management in GWTORM is only implemented for Google's `Megastore` database (`NoSQL` dialect).
 
