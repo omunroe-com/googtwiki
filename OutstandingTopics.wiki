@@ -25,7 +25,7 @@ Transaction management in GWTORM is only implemented for Google's Megastore data
 For Jdbc dialects the methods: `beginTransaction()`, `commit()` and `rollback()` are no-ops:
 `java.sql.Connection` is opened in `autoCommit=true` mode, which means that all executed
 statements are immediately committed. This obviously cannot work with optimistic database locking strategy that GWTORM is using, because it is kind of expected with this approach that some statements
-can and would fail with concurrent row manipulation exception. But this means a disaster with
+can and would fail with stale row manipulation error. But this means a disaster with
 not proper working transaction management, because previous statements were already committed,
 leaving the changes in broken state. The consequences are all these reported issues [https://code.google.com/p/gerrit/issues/detail?id=2034 1], [https://code.google.com/p/gerrit/issues/detail?id=2246 2], [https://code.google.com/p/gerrit/issues/detail?id=2383 3], [https://code.google.com/p/gerrit/issues/detail?id=2702 4],
 [https://groups.google.com/d/topic/repo-discuss/KUUBaI29QO8 5].
