@@ -32,7 +32,7 @@ can and would fail with stale row manipulation error. But this means a disaster 
  * GWTORM changes: [https://gerrit-review.googlesource.com/57851 change]
  * Owner: Bruce, DavidO
  * Status: Bruce's change was merged into stable-2.9 but need to be back ported to 2.8. 
- * Issues: back port the changes also to 2.6 and 2.7 and provide patches also for these Gerrit releases to prevent data loss and corruption. 
+ * Issues: back port the changes also to 2.6 and 2.7 and provide patches also for older Gerrit releases to prevent data loss and corruption. 
 
 =Pluggable authentication backend=
 
