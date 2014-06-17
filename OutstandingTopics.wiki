@@ -7,7 +7,7 @@ Following a   [https://groups.google.com/forum/#!topic/repo-discuss/qKz7AtZDlC4 
 The purpose of this page is to keep track of them and prevent the risk of them being forgotten in the Gerrit changes backlog. The topics listed here are either related to the Gerrit architecture or to some fixes to severe bugs that need particular attention and time for being reviewed and merged.
 
 Currently outstanding topics are:
-  # [OutstandingTopics#Intermittent data_loss_and_corruption data-loss-and-corruption]
+  # [OutstandingTopics#Intermittent_data_loss_and_corruption intermittent-data-loss-and-corruption]
   # [OutstandingTopics#Pluggable_authentication_backend auth-backends-HttpAuthProtocol]
   # [OutstandingTopics#On-Line_edit inline-2]
   # [OutstandingTopics#Scripting_plugins scripting-reloaded]
