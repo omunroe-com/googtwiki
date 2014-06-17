@@ -22,8 +22,8 @@ This needs  *HIGHEST PRIORITY*.
 
 Transaction management in GWTORM is only implemented for Google's Megastore database (NoSQL dialect).
 
-For Jdbc dialects the methods: beginTransaction(), commit() and rollback() are no-op:
-Connection is opened with autoCommit=true, which means that all executed statements are
+For Jdbc dialects the methods: `beginTransaction()`, `commit()` and `rollback()` are no-ops:
+Connection is opened with `autoCommit=true`, which means that all executed statements are
 immediately committed. This obviously cannot work with optimistic database locking strategy 
 that GWTORM is using, because it is kind of expected with this approach that some statements
 can and would fail with concurrent row manipulation exception. But this means a disaster with
