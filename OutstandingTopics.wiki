@@ -35,7 +35,7 @@ leaving the changes in broken state. The consequences are all these reported iss
  * GWTORM changes: [https://gerrit-review.googlesource.com/57851 change]
  * Owner: Bruce, DavidO
  * Status: Bruce's change was merged into stable-2.9 but need to be back ported to 2.8. 
- * Issues: [Optional] back port the changes also to 2.6 and 2.7 and provide patches also for these Gerrit releases to prevent data lost and corruption. 
+ * Issues: *Optional* back port the changes also to 2.6 and 2.7 and provide patches also for these Gerrit releases to prevent data lost and corruption. 
 
 =Pluggable authentication backend=
 
