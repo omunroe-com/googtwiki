@@ -7,6 +7,7 @@ Following a   [https://groups.google.com/forum/#!topic/repo-discuss/qKz7AtZDlC4 
 The purpose of this page is to keep track of them and prevent the risk of them being forgotten in the Gerrit changes backlog. The topics listed here are either related to the Gerrit architecture or to some fixes to severe bugs that need particular attention and time for being reviewed and merged.
 
 Currently outstanding topics are:
+  # [OutstandingTopics#Database_corruption database-corruption]
   # [OutstandingTopics#Pluggable_authentication_backend auth-backends-HttpAuthProtocol]
   # [OutstandingTopics#On-Line_edit inline-2]
   # [OutstandingTopics#Scripting_plugins scripting-reloaded]
@@ -14,6 +15,26 @@ Currently outstanding topics are:
   # [OutstandingTopics#Angular_Gerrit angular-gerrit-integration]
 
 -----
+
+=Database corruption=
+
+This needs  *HIGHEST PRIORITY*.
+
+Transaction management in GWTORM is only implemented for Google's Megastore database (NoSQL dialect).
+
+For Jdbc dialects the methods: beginTransaction(), commit() and rollback() are no-op:
+Connection is opened with autoCommit=true, which means that all executed statements are
+immediately committed. This obviously cannot work with optimistic database locking strategy 
+that GWTORM is using, because it is kind of expected with this approach that some statements
+can and would fail with concurrent row manipulation exception. But this means a disaster with
+not proper working transaction management, because previous statements were already committed,
+leaving the changes in broken state. The consequences are all these reported issues [https://code.google.com/p/gerrit/issues/detail?id=2034 1], [https://code.google.com/p/gerrit/issues/detail?id=2246 2], [https://code.google.com/p/gerrit/issues/detail?id=2383 3], [https://code.google.com/p/gerrit/issues/detail?id=2702 4].
+
+ * Gerrit changes: [https://gerrit-review.googlesource.com/57860 change]
+ * GWTORM changes: [https://gerrit-review.googlesource.com/57851 change]
+ * Owner: Bruce, DavidO
+ * Status: Bruce's change was merged into stable-2.9 but need to be back ported to 2.8. 
+ * Issues: [Optional] back port the changes also to 2.6 and 2.7 and provide patches also for these Gerrit releases to prevent data lost and corruption. 
 
 =Pluggable authentication backend=
 
