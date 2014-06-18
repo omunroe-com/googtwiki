@@ -29,7 +29,7 @@ it is expected with this approach that some statements can and would
 fail with stale row manipulation error. But this means a disaster with
 not proper working transaction management, because `rollback()` is a
 no-op and all `SQL` statements that were executed after `beginTransaction()` were already committed, leaving the changes in undefined state. Note: all databases used by Gerrit have transaction 
-support (with one exception: MySQL's `MyISAM` storage engine, but it is a crap anyway, and both `OpenStack` and `Wikimedia` projects are using `InnoDB` storage engine, obviously). More background information in this [https://groups.google.com/d/topic/repo-discuss/KUUBaI29QO8 thread]. The consequences are all these reported issues [https://code.google.com/p/gerrit/issues/detail?id=2034 1], [https://code.google.com/p/gerrit/issues/detail?id=2246 2], [https://code.google.com/p/gerrit/issues/detail?id=2383 3], [https://code.google.com/p/gerrit/issues/detail?id=2702 4].
+support (with one exception: MySQL's `MyISAM` storage engine, but it is a crap anyway, and both `OpenStack` and `Wikimedia` projects are using `InnoDB` storage engine, obviously). More background information can be found in this [https://groups.google.com/d/topic/repo-discuss/KUUBaI29QO8 thread]. The consequences are all these reported issues [https://code.google.com/p/gerrit/issues/detail?id=2034 1], [https://code.google.com/p/gerrit/issues/detail?id=2246 2], [https://code.google.com/p/gerrit/issues/detail?id=2383 3], [https://code.google.com/p/gerrit/issues/detail?id=2702 4].
 
  * Gerrit changes: [https://gerrit-review.googlesource.com/#/q/topic:database-corruption changes]
  * Owner: Bruce, DavidO
