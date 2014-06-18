@@ -23,12 +23,7 @@ This has the *HIGHEST PRIORITY*.
 Transaction management in `GWTORM` is only implemented for Google's `Megastore` database (`NoSQL` dialect).
 
 For Jdbc dialects the methods: `beginTransaction()`, `commit()` and `rollback()` are no-ops:
-`java.sql.Connection` is opened in `autoCommit=true` mode, which means that all executed
-statements are immediately committed. This obviously cannot work with optimistic database locking strategy that `GWTORM` is using, because
-it is expected with this approach that some statements can and would
-fail with stale row manipulation error. But this means a disaster with
-not proper working transaction management, because `rollback()` is a
-no-op and all `SQL` statements that were executed after `beginTransaction()` were already committed, leaving the changes in undefined state. Note: all databases used by Gerrit have transaction 
+`java.sql.Connection` is opened in `autoCommit=true` mode, what effectively means that all executed statements are immediately committed. This obviously cannot work with optimistic database locking strategy that `GWTORM` is using, because it is expected with this approach that some statements can and would fail with stale row manipulation error. But this means a disaster with not proper working transaction management, because `rollback()` is a no-op and all `SQL` statements that were executed after `beginTransaction()` were already committed, leaving the changes in undefined state. Note: all databases used by Gerrit have transaction 
 support (with one exception: MySQL's `MyISAM` storage engine, but it is a crap anyway, and both `OpenStack` and `Wikimedia` projects are using `InnoDB` storage engine, obviously). More background information can be found in this [https://groups.google.com/d/topic/repo-discuss/KUUBaI29QO8 thread].
 
 The consequences are all these reported issues [https://code.google.com/p/gerrit/issues/detail?id=2034 1], [https://code.google.com/p/gerrit/issues/detail?id=2246 2], [https://code.google.com/p/gerrit/issues/detail?id=2383 3], [https://code.google.com/p/gerrit/issues/detail?id=2702 4].
