@@ -34,7 +34,7 @@ support (with one exception: MySQL's MyISAM storage engine). More background inf
  * Gerrit changes: [https://gerrit-review.googlesource.com/#/q/topic:database-corruption changes]
  * Owner: Bruce, DavidO
  * Status: Bruce's change was merged into stable-2.9 but need to be back ported to 2.8. 
- * Issues: back port the changes also to 2.6 and 2.7 and provide patches also for older Gerrit releases to prevent data loss and corruption. 
+ * Issues: back port the changes also to 2.6 and 2.7 and provide patches for older Gerrit releases to prevent data loss and corruption. 
 
 =Pluggable authentication backend=
 
