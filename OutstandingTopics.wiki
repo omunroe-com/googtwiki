@@ -30,8 +30,8 @@ More background information can be found in this [https://groups.google.com/d/to
 
  * Gerrit changes: [https://gerrit-review.googlesource.com/#/c/58104 change]
  * Owner: DavidO
- * Status: Approved, needs to be verified.
- * Issues: Create new release 2.8.6 with these fixes.
+ * Status: Merged into master. Cherry-picked into 1.7 gwtorm branch, approved there and needs to be verified.
+ * Issues: Create new release 2.8.6 with these series.
 
 =Pluggable authentication backend=
 
