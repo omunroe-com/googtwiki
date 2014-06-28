@@ -28,10 +28,10 @@ Note: all databases used by Gerrit have transaction support (with one exception:
 
 More background information can be found in this [https://groups.google.com/d/topic/repo-discuss/KUUBaI29QO8 thread]. The consequences are all these reported issues [https://code.google.com/p/gerrit/issues/detail?id=2034 1], [https://code.google.com/p/gerrit/issues/detail?id=2246 2], [https://code.google.com/p/gerrit/issues/detail?id=2383 3], [https://code.google.com/p/gerrit/issues/detail?id=2702 4].
 
- * Gerrit changes: [https://gerrit-review.googlesource.com/57851 change]
+ * Gerrit changes: [https://gerrit-review.googlesource.com/#/c/58104 change]
  * Owner: DavidO
- * Status: Approved and Verified, waiting to be merged.
- * Issues: back port the [https://gerrit-review.googlesource.com/57851 change] into gwtorm version used by Gerrit 2.8 release line.
+ * Status: Approved, needs to be verified.
+ * Issues: Create new release 2.8.6 with these fixes.
 
 =Pluggable authentication backend=
 
