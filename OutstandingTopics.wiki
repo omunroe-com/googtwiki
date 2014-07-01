@@ -30,7 +30,7 @@ More background information can be found in this [https://groups.google.com/d/to
 
  * Gerrit changes: [https://gerrit-review.googlesource.com/58166 change1] and [https://gerrit-review.googlesource.com/58144 change2]
  * Owner: DavidO
- * Status: The above changes are still missing library-compliance label. All other changes were merged.
+ * Status: The above two changes are still missing library-compliance label. All other changes were merged.
  * Issues: Patch upcoming release 2.9 with these series as well.
 
 =Pluggable authentication backend=
