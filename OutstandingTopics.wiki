@@ -10,7 +10,6 @@ Currently outstanding topics are:
   # [OutstandingTopics#Intermittent_data_loss_and_corruption intermittent-data-loss-and-corruption]
   # [OutstandingTopics#Pluggable_authentication_backend auth-backends-HttpAuthProtocol]
   # [OutstandingTopics#On-Line_edit inline-2]
-  # [OutstandingTopics#Scripting_plugins scripting-reloaded]
   # [OutstandingTopics#Secure_Store secure-store]
   # [OutstandingTopics#Angular_Gerrit angular-gerrit-integration]
 
@@ -54,19 +53,6 @@ The overall user-experience is nice and is provides a very quick and easy shortc
   * Owner: [https://gerrit-review.googlesource.com/#/q/owner:%22David+Ostrovsky+%253CDavid.Ostrovsky%2540gmx.de%253E%22+status:open DavidO]
   * Status: second version of the on-line edit. Demoed at the last Gerrit User Summit 2014 @Google. Review should be finalized
   * Issues: The major parts of the series were reviewed and tested by Björn Pedersen, David P., Shawn and Martin. All comments were addressed. Particularly after Shawn comment the series was substantially redesigned: `RevisionEdits` were evacuated out from `GET /changes<id>/detail` request and put into its own request.
-
-=Scripting plugins=
-
-Introduce the ability to load scripts written in languages different than Java (e.g. Groovy, Scala and potentially any other language that can run on the JVM) and use them as Gerrit plugins for extending Gerrit functionalities.
-
-Currently the plugin-type is an hardcoded Enum that allows only "plugin", "extension" and "javascript" types. Once the changes will be reviewed and merged, Gerrit would potentially support any type of plugin that declares to support a specific file or directory w/ extension.
-
-For an overview on Gerrit Scripting Plugins, see the [http://www.slideshare.net/lucamilanesio/gerrit-code-review-how-to-script-a-plugin-with-scala-and-groovy SlideShare] slide-deck presented at the Gerrit User Summit 2014 @Google.
-
-  * Gerrit changes: [https://gerrit-review.googlesource.com/#/q/status:open+topic:scripting-reloaded changes]
-  * Owner: [https://gerrit-review.googlesource.com/#/q/owner:%22Luca+Milanesio+%253Cluca.milanesio%2540gmail.com%253E%22 Luca]
-  * Status: review started, partially merged
-  * Issues: after having merged part of it, the review is now stuck. Needs Shawn attention as we are coming to the part of refactoring the current Jar Scanner in order to scan things that are not Jars.
 
 =Secure Store=
 
