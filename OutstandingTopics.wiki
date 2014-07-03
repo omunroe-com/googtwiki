@@ -9,7 +9,7 @@ The purpose of this page is to keep track of them and prevent the risk of them b
 Currently outstanding topics are:
   # [OutstandingTopics#Intermittent_data_loss_and_corruption intermittent-data-loss-and-corruption]
   # [OutstandingTopics#Pluggable_authentication_backend auth-backends-HttpAuthProtocol]
-  # [OutstandingTopics#On-Line_edit inline-2]
+  # [OutstandingTopics#On-Line_edit online-2]
   # [OutstandingTopics#Secure_Store secure-store]
   # [OutstandingTopics#Angular_Gerrit angular-gerrit-integration]
 
