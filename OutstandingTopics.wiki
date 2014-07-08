@@ -27,10 +27,9 @@ Note: all databases used by Gerrit have transaction support (with one exception:
 
 More background information can be found in this [https://groups.google.com/d/topic/repo-discuss/KUUBaI29QO8 thread]. The consequences are all these reported issues [https://code.google.com/p/gerrit/issues/detail?id=2034 1], [https://code.google.com/p/gerrit/issues/detail?id=2246 2], [https://code.google.com/p/gerrit/issues/detail?id=2383 3], [https://code.google.com/p/gerrit/issues/detail?id=2702 4].
 
- * Gerrit changes: [https://gerrit-review.googlesource.com/58234 change]
  * Owner: DavidO
- * Status: Fixed version of gwtorm needs to be LC+1 to release 2.8.6.1.
- * Issues: Replace gwtorm with new version 1.13 that has transaction management support in upcoming 2.9 release.
+ * Status: 2.8.6.1 version was released that fixes it.
+ * Issues: Replace gwtorm with new all needed fixes in upcoming 2.9 release.
 
 =Pluggable authentication backend=
 
