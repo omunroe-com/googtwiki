@@ -8,7 +8,7 @@ The purpose of this page is to keep track of them and prevent the risk of them b
 
 Currently outstanding topics are:
   # [OutstandingTopics#Pluggable_authentication_backend auth-backends-HttpAuthProtocol]
-  # [OutstandingTopics#On-Line_edit online-2]
+  # [OutstandingTopics#On-Line_edit online-3]
   # [OutstandingTopics#Secure_Store secure-store]
   # [OutstandingTopics#Angular_Gerrit angular-gerrit-integration]
 
@@ -31,10 +31,10 @@ Allows to perform small edits on the files included in an existing Gerrit change
 
 The overall user-experience is nice and is provides a very quick and easy shortcut for avoiding to go through the check-out / modify / commit --amend / push workflow for small changes. GitHub provides already this feature and is really nice!
 
-  * Gerrit changes: [https://gerrit-review.googlesource.com/#/q/status:open+project:gerrit+branch:master+topic:inline-2 changes]
+  * Gerrit changes: [https://gerrit-review.googlesource.com/#/q/status:open+project:gerrit+branch:master+topic:inline-3 changes]
   * Owner: [https://gerrit-review.googlesource.com/#/q/owner:%22David+Ostrovsky+%253CDavid.Ostrovsky%2540gmx.de%253E%22+status:open DavidO]
-  * Status: second version of the on-line edit. Demoed at the last Gerrit User Summit 2014 @Google. Review should be finalized
-  * Issues: The major parts of the series were reviewed and tested by Björn Pedersen, David P., Shawn and Martin. All comments were addressed. Particularly after Shawn comment the series was substantially redesigned: `RevisionEdits` were evacuated out from `GET /changes<id>/detail` request and put into its own request.
+  * Status: third version of the on-line edit. Demoed at the last Gerrit User Summit 2014 @Google. Review should be finalized
+  * Issues: Third major overhaul of the series (after migration from CS to CS2 and decoupling of revision edits from GET /changes/<id>/detail REST endpoint): Edits are now stored on /refs/users/UU/UUUU/edit-CCCC ref and max. one edit per change per user. Parent of edit commit is the SHA-1 of the patch set it is based on. The major parts of the series were reviewed and tested by Björn Pedersen, David P., Shawn and Martin.
 
 =Secure Store=
 
