@@ -34,7 +34,7 @@ The overall user-experience is nice and is provides a very quick and easy shortc
   * Gerrit changes: [https://gerrit-review.googlesource.com/#/q/status:open+project:gerrit+branch:master+topic:inline-3 changes]
   * Owner: [https://gerrit-review.googlesource.com/#/q/owner:%22David+Ostrovsky+%253CDavid.Ostrovsky%2540gmx.de%253E%22+status:open DavidO]
   * Status: third version of the on-line edit. Demoed at the last Gerrit User Summit 2014 @Google. Review should be finalized
-  * Issues: Third major overhaul of the series (after migration from CS to CS2 and decoupling of revision edits from GET /changes/<id>/detail REST endpoint): Edits are now stored on /refs/users/UU/UUUU/edit-CCCC ref and max. one edit per change per user. Parent of edit commit is the SHA-1 of the patch set it is based on. The major parts of the series were reviewed and tested by Björn Pedersen, David P., Shawn and Martin.
+  * Issues: Third major overhaul of the series (after migration from CS to CS2 and decoupling of revision edits from GET /changes/id/detail REST endpoint): Edits are now stored on /refs/users/UU/UUUU/edit-CCCC ref and max. one edit per change per user. Parent of edit commit is the SHA-1 of the patch set it is based on. The major parts of the series were reviewed and tested by Björn Pedersen, David P., Shawn and Martin.
 
 =Secure Store=
 
