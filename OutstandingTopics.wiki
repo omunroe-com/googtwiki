@@ -8,7 +8,7 @@ The purpose of this page is to keep track of them and prevent the risk of them b
 
 Currently outstanding topics are:
   # [OutstandingTopics#Pluggable_authentication_backend auth-backends-HttpAuthProtocol]
-  # [OutstandingTopics#On-Line_edit online-3]
+  # [OutstandingTopics#Inline_edit inline-3]
   # [OutstandingTopics#Secure_Store secure-store]
   # [OutstandingTopics#Angular_Gerrit angular-gerrit-integration]
 
@@ -25,7 +25,7 @@ These changes would allow Gerrit to be more extensible, avoiding further growth 
   * Status: review started, partially merged
   * Issues: after having merged part of it, the review is now stuck. Needs Shawn attention as the first attempt to merge it broke the Gerrit authentication.
 
-=On-Line edit=
+=Inline edit=
 
 Allows to perform small edits on the files included in an existing Gerrit change in order to submit a new patch-set. Currently it is already possible on the commit message but not on the code.
 
@@ -33,8 +33,8 @@ The overall user-experience is nice and is provides a very quick and easy shortc
 
   * Gerrit changes: [https://gerrit-review.googlesource.com/#/q/status:open+project:gerrit+branch:master+topic:inline-3 changes]
   * Owner: [https://gerrit-review.googlesource.com/#/q/owner:%22David+Ostrovsky+%253CDavid.Ostrovsky%2540gmx.de%253E%22+status:open DavidO]
-  * Status: third version of the on-line edit. Demoed at the last Gerrit User Summit 2014 @Google. Review should be finalized
-  * Issues: Third major overhaul of the series (after migration from CS to CS2 and decoupling of revision edits from GET /changes/id/detail REST endpoint): Edits are now stored on /refs/users/UU/UUUU/edit-CCCC ref and max. one edit per change per user. Parent of edit commit is the SHA-1 of the patch set it is based on. The major parts of the series were reviewed and tested by Björn Pedersen, David P., Shawn and Martin.
+  * Status: third version of the inline edit. Demoed at the last Gerrit User Summit 2014 @Google. 
+  * Issues: Ground work changes were recently merged. REST API underwent major overhaul recently and moved to /changes/<id>/edit collection resource semantic. Review of REST API is almost finalized. Still unreviewed UI integration: CS2, SBS2, etc.
 
 =Secure Store=
 
