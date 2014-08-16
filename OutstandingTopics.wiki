@@ -33,8 +33,8 @@ The overall user-experience is nice and is provides a very quick and easy shortc
 
   * Gerrit changes: [https://gerrit-review.googlesource.com/#/q/status:open+project:gerrit+branch:master+topic:inline-3 changes]
   * Owner: [https://gerrit-review.googlesource.com/#/q/owner:%22David+Ostrovsky+%253CDavid.Ostrovsky%2540gmx.de%253E%22+status:open DavidO]
-  * Status: third version of the inline edit. Demoed at the last Gerrit User Summit 2014 @Google. 
-  * Issues: Ground work changes were recently merged (30% of the series). REST API underwent major overhaul recently and moved to /changes/X/edit collection resource semantic. Review of REST API is almost finalized (30% of the series). Still completely unreviewed is UI integration: CS2, SBS2, etc. (40 % of the series).
+  * Status: partially merged (30%). 
+  * Issues: ground work changes were merged recently (30% of the series). REST API underwent major overhaul recently and moved to /changes/X/edit collection resource semantic. Review of REST API is almost finalized (30% of the series). Still completely unreviewed is UI integration: CS2, SBS2, etc. (40 % of the series).
 
 =Secure Store=
 
