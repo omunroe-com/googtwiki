@@ -27,14 +27,14 @@ These changes would allow Gerrit to be more extensible, avoiding further growth 
 
 =Inline edit=
 
-Allows to perform small edits on the files included in an existing Gerrit change in order to submit a new patch-set. Currently it is already possible on the commit message but not on the code.
+Allows to perform edits on the files included in an existing Gerrit change in order to submit a new patch-set. Currently it is already possible on the commit message but not on the code.
 
 The overall user-experience is nice and is provides a very quick and easy shortcut for avoiding to go through the check-out / modify / commit --amend / push workflow for small changes. GitHub provides already this feature and is really nice!
 
   * Gerrit changes: [https://gerrit-review.googlesource.com/#/q/status:open+project:gerrit+branch:master+topic:inline-3 changes]
   * Owner: [https://gerrit-review.googlesource.com/#/q/owner:%22David+Ostrovsky+%253CDavid.Ostrovsky%2540gmx.de%253E%22+status:open DavidO]
-  * Status: partially merged (30%). 
-  * Issues: ground work changes were merged recently (30% of the series). REST API underwent major overhaul recently and moved to /changes/X/edit collection resource semantic. Review of REST API is almost finalized (30% of the series). Still completely unreviewed is UI integration: CS2, SBS2, etc. (40% of the series). Still not implemented: git push, CM3 integration.
+  * Status: Partially merged (60%). Ground work/Git manipulation changes were merged recently: 30% of the series. REST API underwent major overhaul and was moved to /changes/X/edit collection resource semantic. The changes were merged recently: 30% of the series. UI integration: CS2, SBS2, Download-commands plugin, etc. still under review: 40% of the series.
+  * Issues: Still TODO: git push and CM3 integration
 
 =Secure Store=
 
