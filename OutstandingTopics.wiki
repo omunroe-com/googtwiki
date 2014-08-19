@@ -33,7 +33,7 @@ The overall user-experience is nice and is provides a very quick and easy shortc
 
   * Gerrit changes: [https://gerrit-review.googlesource.com/#/q/status:open+project:gerrit+branch:master+topic:inline-3 changes]
   * Owner: [https://gerrit-review.googlesource.com/#/q/owner:%22David+Ostrovsky+%253CDavid.Ostrovsky%2540gmx.de%253E%22+status:open DavidO]
-  * Status: Partially merged (60%). Ground work/Git manipulation changes were merged recently: 30% of the series. REST API underwent major overhaul and was moved to /changes/X/edit collection resource semantic. The changes were merged recently: 30% of the series. UI integration: CS2, SBS2, Download-commands plugin, etc. still under review: 40% of the series.
+  * Status: Partially merged (80%). Ground work/Git manipulation changes were merged recently: 40% of the series. REST API underwent major overhaul and was moved to /changes/X/edit collection resource semantic. The changes were merged recently: 40% of the series. UI integration: CS2, SBS2, Download-commands plugin, etc. still under review: 20% of the series.
   * Issues: Still TODO: git push and CM3 integration
 
 =Secure Store=
