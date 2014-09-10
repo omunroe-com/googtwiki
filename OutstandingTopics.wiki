@@ -8,7 +8,6 @@ The purpose of this page is to keep track of them and prevent the risk of them b
 
 Currently outstanding topics are:
   # [OutstandingTopics#Pluggable_authentication_backend auth-backends-HttpAuthProtocol]
-  # [OutstandingTopics#Inline_edit inline-3]
   # [OutstandingTopics#Secure_Store secure-store]
   # [OutstandingTopics#Angular_Gerrit angular-gerrit-integration]
 
@@ -24,17 +23,6 @@ These changes would allow Gerrit to be more extensible, avoiding further growth 
   * Owner: [https://gerrit-review.googlesource.com/#/q/owner:%22Dariusz+%25C5%2581uksza%22+status:open Dariusz]
   * Status: review started, partially merged
   * Issues: after having merged part of it, the review is now stuck. Needs Shawn attention as the first attempt to merge it broke the Gerrit authentication.
-
-=Inline edit=
-
-Allows to perform edits on the files included in an existing Gerrit change in order to submit a new patch-set. Currently it is already possible on the commit message but not on the code.
-
-The overall user-experience is nice and is provides a very quick and easy shortcut for avoiding to go through the check-out / modify / commit --amend / push workflow for small changes. GitHub provides already this feature and is really nice!
-
-  * Gerrit changes: [https://gerrit-review.googlesource.com/#/q/status:open+project:gerrit+branch:master+topic:inline-3 changes]
-  * Owner: [https://gerrit-review.googlesource.com/#/q/owner:%22David+Ostrovsky+%253CDavid.Ostrovsky%2540gmx.de%253E%22+status:open DavidO]
-  * Status: Partially merged (80%). Ground work/Git manipulation changes were merged recently: 40% of the series. REST API underwent major overhaul and was moved to /changes/X/edit collection resource semantic. The changes were merged recently: 40% of the series. UI integration: CS2, SBS2, Download-commands plugin, etc. still under review: 20% of the series.
-  * Issues: Still TODO: git push and CM3 integration.
 
 =Secure Store=
 
