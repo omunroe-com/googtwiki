@@ -13,6 +13,28 @@ Currently outstanding topics are:
 
 -----
 
+=External ID for identity federation=
+
+Allows to federate Gerrit identity with a 3rd party authentication system and store the authenticated code into user's external identities.
+
+This change allows to effectively enable SSO with 3rd party systems (e.g. GitHub OAuth) and propagate Gerrit's authenticated session to the 3rd party backend API by using an additional external ID code stored into the account_external_ids table.
+
+  * Gerrit changes: [https://gerrit-review.googlesource.com/#/q/status:open+project:gerrit+branch:master+topic:external-ids changes]
+  * Owner: [https://gerrit-review.googlesource.com/#/q/owner:%22Luca+Milanesio%22+status:open Luca]
+  * Status: review started
+  * Issues: No reviewers with +2 permissions started to look at the change.
+
+=Top-menu loading=
+
+Refactor the top-menu loading mechanism in order to enrich the current REST-API to fetch its entire content from the backend. Currently it is a "mixed" GWT + REST-API driven, with part of the logic in GWT and other in the REST-API. 
+
+The inability to control the top-menu from a REST-API forbids plugins (or other alternative Gerrit GUIs) to render Gerrit header. With this change it will be potentially possible to box the Gerrit top-menu into a different L&F.
+
+  * Gerrit changes: [https://gerrit-review.googlesource.com/#/q/status:open+project:gerrit+branch:master+topic:top-menus changes]
+  * Owner: [https://gerrit-review.googlesource.com/#/q/owner:%22Luca+Milanesio%22+status:open Luca]
+  * Status: review started
+  * Issues: No reviewers with +2 permissions started to look at the change.
+
 =Pluggable authentication backend=
 
 Replace the current Gerrit authentication infrastructure, mainly based on mega-switch/case with the list of protocols/methods supported, with a new plugin-based authentication back-end. 
@@ -23,17 +45,6 @@ These changes would allow Gerrit to be more extensible, avoiding further growth 
   * Owner: [https://gerrit-review.googlesource.com/#/q/owner:%22Dariusz+%25C5%2581uksza%22+status:open Dariusz]
   * Status: review started, partially merged
   * Issues: after having merged part of it, the review is now stuck. Needs Shawn attention as the first attempt to merge it broke the Gerrit authentication.
-
-=Secure Store=
-
-Makes the Gerrit secure.config more secure by encrypting its values. This change aims to make the security system applied to the secure.config more generic and pluggable. Potentially the key-value pairs could be stored in an external security vault and not even persisted in the filesystem.
-
-The challenges are actually on where the secure.config is used: all over the place in Gerrit whenever a @GerritServerConfig annotation is present. Additionally when the config gets created the plugin infrastructure and loader are not available: the pluggability then needs to use another discovery system.
-
-  * Gerrit changes: [https://gerrit-review.googlesource.com/#/q/status:open+topic:secure-store changes]
-  * Owner: [https://gerrit-review.googlesource.com/#/q/owner:%22Dariusz+%25C5%2581uksza%22+status:open Dariusz]
-  * Status: review started
-  * Issues: positive and negative feedbacks on the change. Needs rethinking / reworking possibly to a much simpler approach.
 
 =Angular Gerrit=
 
