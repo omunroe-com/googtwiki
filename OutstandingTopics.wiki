@@ -21,8 +21,8 @@ This change allows to effectively enable SSO with 3rd party systems (e.g. GitHub
 
   * Gerrit changes: [https://gerrit-review.googlesource.com/#/q/status:open+project:gerrit+branch:master+topic:external-ids changes]
   * Owner: [https://gerrit-review.googlesource.com/#/q/owner:%22Luca+Milanesio%22+status:open Luca]
-  * Status: review started
-  * Issues: No reviewers with +2 permissions started to look at the change.
+  * Status: review started (DavidP provided a +1)
+  * Issues: Need extra reviewers with +2 permissions to finalise the change.
 
 =Top-menu loading=
 
