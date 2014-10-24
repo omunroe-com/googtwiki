@@ -72,7 +72,9 @@ Jsch has threading issues which seem to serialize replication even across worker
 
 == Failed To Lock ==
 
-If you have a fairly smooth replication setup, your replication can start running into contention and failing with "Failed to Lock" errors in your logs.  This can happen when 2 separate threads attempt to replicate the same project/branch combination.  The Gerrit replication code does not yet retry these failures and it can result in your mirrors being out of date.
+With older versions of the replication plug-in, your replication can start running into contention and failing with "Failed to Lock" errors in your logs.  This can happen when 2 separate threads attempt to replicate the same project/branch combination (the plug-in no longer allows this).  This problem can resurface even with the newer plug-ing if you run a MultiMaster setup since nothing currently prevents two different masters running the replciation plug-in for the same instance from pushing the same ref at the same time.
+
+There are other scenarios besides replication contention that can cause "Failed to Lock" errors.  Fortunately, the current version of the replication plug-in can be configured to retry these failed pushes.
 
 ----
 
