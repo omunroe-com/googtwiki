@@ -1,30 +1,5 @@
 #summary Scaling Gerrit Installations
 
-= Master =
-
-The first step to scaling is to scale your master server.  Some easy, but pricey ways to scale your master are:
-
-  * Adding cores, some of the larger installations use 48 core machines
-  * Adding RAM, most of the larger installations have over 100GB, at least one has 1TB
-  * Ensure fast disk IO, SSDs help prevent serious performance degradation when repos are not well repacked.
-  * Network, I suspect that most large installs use 10Gb Ethernet
-
-= Mirrors/Slaves =
-
-Once you have a decent master, it is probably worth adding either some git mirrors (if you do not need ACLs on your repos), or Gerrit slaves to help offload much of your read only requests.  Mirrors/Slaves can also help reduce LAN and WAN traffic if you place them nearer your users/build hosts, this can be particularly useful for remote sites.  Some of the larger installations have at least 25 of these.
-
-== Shared Storage and Replication Entries For Slaves ==
-
-A common practice is to use site local shared storage on remote slaves when there is more than one slave at the remote site.  This requires consolidating the replication events to those slaves in order to avoid having duplicated pushes to the same storage.  This consolidation means that the master replication file will only have one entry for each set of slaves on the same storage.  One major advantage of this is that it reduces the data required to be pushed during replication to that site.  While a single slave could be setup as the sole replication receiver, added availability and scaling is being reliably achieved by using a load balancer on the receiving end.
-
-== DB Slaves ==
-
-DB slaves can be used on remote sites so that remote slaves do not have to traverse the WAN to talk to the master DB.  Both PostGreSQL and MYSQL is been used successfully for this.  This can be particularly helpful to help reduce some WAN traffic related to high ref counts when doing repo syncs (the [https://gerrit-review.googlesource.com/#/c/35220 change cache] was designed to help with this.)
-
-= Multi - Master =
-
-The Gerrit MultiMaster plug-in describes how to setup a single site multi-master with a shared repo back-end, but there are no known sites using the opens source MM technology yet.  The google hosted gerrit-review site currently runs in multi-site multi-master mode, but it relies on proprietary technology to do so.
-
 = Scaling Dimensions =
 
 As you scale, you will always run into some issues.  Depending on your specific setup those issues may be very different from what other people are running into.  Some of the specific dimensions which people may or may not need to scale on are:
@@ -37,9 +12,38 @@ As you scale, you will always run into some issues.  Depending on your specific 
  * Single Repository Sizes:  Some Gerrit projects are 40G aggressively packed, these can often cause issues with email templates taking lots of CPU
  * Total Repository Sizes: Gerrit can handle at least 1TB of repository data easily
  * Large Files: Gerrit may have difficulty with some very large files (what size can it handle easily?)
-* Number of Slaves: Several installations have over 10 slaves per master, at least one has 25.
-* Number of Continents with slaves: Slaves for a single master have been distributed across at least 3 continents successfully
-* Number of Receive-Packs: Some Gerrit masters are handling 20k receive-packs (pushes) per day.
+ * Number of Slaves: Several installations have over 10 slaves per master, at least one has 25.
+ * Number of Continents with slaves: Slaves for a single master have been distributed across at least 3 continents successfully
+ * Number of Receive-Packs: Some Gerrit masters are handling 20k receive-packs (pushes) per day.
+
+----
+
+= Servers =
+
+== Master ==
+
+The first step to scaling is to scale your master server.  Some easy, but pricey ways to scale your master are:
+
+  * Adding cores, some of the larger installations use 48 core machines
+  * Adding RAM, most of the larger installations have over 100GB, at least one has 1TB
+  * Ensure fast disk IO, SSDs help prevent serious performance degradation when repos are not well repacked.
+  * Network, I suspect that most large installs use 10Gb Ethernet
+
+== Mirrors/Slaves ==
+
+Once you have a decent master, it is probably worth adding either some git mirrors (if you do not need ACLs on your repos), or Gerrit slaves to help offload much of your read only requests.  Mirrors/Slaves can also help reduce LAN and WAN traffic if you place them nearer your users/build hosts, this can be particularly useful for remote sites.  Some of the larger installations have at least 25 of these.
+
+=== Shared Storage and Replication Entries For Slaves ===
+
+A common practice is to use site local shared storage on remote slaves when there is more than one slave at the remote site.  This requires consolidating the replication events to those slaves in order to avoid having duplicated pushes to the same storage.  This consolidation means that the master replication file will only have one entry for each set of slaves on the same storage.  One major advantage of this is that it reduces the data required to be pushed during replication to that site.  While a single slave could be setup as the sole replication receiver, added availability and scaling is being reliably achieved by using a load balancer on the receiving end.
+
+=== DB Slaves ===
+
+DB slaves can be used on remote sites so that remote slaves do not have to traverse the WAN to talk to the master DB.  Both PostGreSQL and MYSQL is been used successfully for this.  This can be particularly helpful to help reduce some WAN traffic related to high ref counts when doing repo syncs (the [https://gerrit-review.googlesource.com/#/c/35220 change cache] was designed to help with this.)
+
+== Multi - Master ==
+
+The Gerrit MultiMaster plug-in describes how to setup a single site multi-master with a shared repo back-end, but there are no known sites using the opens source MM technology yet.  The google hosted gerrit-review site currently runs in multi-site multi-master mode, but it relies on proprietary technology to do so.
 
 ----
 
@@ -100,10 +104,6 @@ There are some very high performance patches which make jgit extremely fast.
 == Tags ==
 
 If you have android repositories, you likely use around 400 of them.  Cross project tagging can be [http://marc.info/?l=git&m=133772533609422&w=2 problematic].  There are no good solutions yet to this problem.
-
-----
-
-== Changes ==
 
 ----
 
