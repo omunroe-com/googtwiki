@@ -2,12 +2,12 @@
 
 = Master =
 
-The first step to scaling is to scale your master server.  Some easy, but pricy ways to scale your master are:
+The first step to scaling is to scale your master server.  Some easy, but pricey ways to scale your master are:
 
   * Adding cores, some of the larger installations use 48 core machines
   * Adding RAM, most of the larger installations have over 100GB, at least one has 1TB
   * Ensure fast disk IO, SSDs help prevent serious performance degradation when repos are not well repacked.
-  * Network, I suspect that most large installs use 10Gb ethernet
+  * Network, I suspect that most large installs use 10Gb Ethernet
 
 = Mirrors/Slaves =
 
@@ -15,15 +15,15 @@ Once you have a decent master, it is probably worth adding either some git mirro
 
 == Shared Storage and Replication Entries For Slaves ==
 
-A common practice is to use site local shared storage on remote slaves when there is more than one slave at the remote site.  This requires consolidating the replication events to those slaves in order to avoid having dupicated pushes to the same storage.  This consolidation means that the master replication file will only have one entry for each set of slaves on the same storage.  One major advantage of this is that it reduces the data required to be pushed during replication to that site.  While a single slave could be setup as the sole replication receiver, added availability and scaling is being reliably achieved by using a load balancer on the receiving end.
+A common practice is to use site local shared storage on remote slaves when there is more than one slave at the remote site.  This requires consolidating the replication events to those slaves in order to avoid having duplicated pushes to the same storage.  This consolidation means that the master replication file will only have one entry for each set of slaves on the same storage.  One major advantage of this is that it reduces the data required to be pushed during replication to that site.  While a single slave could be setup as the sole replication receiver, added availability and scaling is being reliably achieved by using a load balancer on the receiving end.
 
 == DB Slaves ==
 
-DB slaves can be used on remote sites so that remote slaves do not have to traverse the WAN to talk to the master DB.  Both PostGreSQL and MYSQL is been used succesfully for this.  This can be particularly helpful to help reduce some WAN traffic related to high ref counts when doing repo syncs (the [https://gerrit-review.googlesource.com/#/c/35220 change cache] was designed to help with this.)
+DB slaves can be used on remote sites so that remote slaves do not have to traverse the WAN to talk to the master DB.  Both PostGreSQL and MYSQL is been used successfully for this.  This can be particularly helpful to help reduce some WAN traffic related to high ref counts when doing repo syncs (the [https://gerrit-review.googlesource.com/#/c/35220 change cache] was designed to help with this.)
 
 = Multi - Master =
 
-The Gerrit MultiMaster plugin describes how to setup a single site multi-master with a shared repo backend, but there are no known sites using the opens source MM technology yet.  The google hosted gerrit-review site currently runs in multi-site multi-master mode, but it relies on proprietary technology to do so.
+The Gerrit MultiMaster plug-in describes how to setup a single site multi-master with a shared repo back-end, but there are no known sites using the opens source MM technology yet.  The google hosted gerrit-review site currently runs in multi-site multi-master mode, but it relies on proprietary technology to do so.
 
 = Scaling Dimensions =
 
@@ -35,8 +35,11 @@ As you scale, you will always run into some issues.  Depending on your specific 
  * Number of Users: Many installs server 1K users, some serve at least 3K.
  * Number of Groups: Some Gerrit installs use 6K groups (most issues have been worked out here)
  * Single Repository Sizes:  Some Gerrit projects are 40G aggressively packed, these can often cause issues with email templates taking lots of CPU
- * Total Repository Sizes: Gerrit can handle at least 500GB of repository data easily
+ * Total Repository Sizes: Gerrit can handle at least 1TB of repository data easily
  * Large Files: Gerrit may have difficulty with some very large files (what size can it handle easily?)
+* Number of Slaves: Several installations have over 10 slaves per master, at least one has 25.
+* Number of Continents with slaves: Slaves for a single master have been distributed across at least 3 continents successfully
+* Number of Receive-Packs: Some Gerrit masters are handling 20k receive-packs (pushes) per day.
 
 ----
 
@@ -50,7 +53,7 @@ The default built in container which Gerrit uses is Jetty.  Some installations h
 
 With beefier servers, many people have [http://groups.google.com/group/repo-discuss/browse_thread/thread/c8f003f2247d7157/ad6915f5558df8f5?lnk=gst&q=repo+sync+error#ad6915f5558df8f5 seen] channel master issues with ssh.  You may set GIT_SSH to avoid these:
 
-  export GIT_SSH=$(which ssh) 
+  export GIT_SSH=$(which ssh)
 
 ----
 
@@ -112,7 +115,7 @@ Installations which do not have enough spare disk space for their repos can run 
 
 == Git GC Repo Explosions ==
 
-Under certain conditions git gc can cause a repo explosion, primarily when unreferenced objects are removed from pack files and are placed as loose refs in the filesystem.  Eventually git gc should prune these, but until that happens serious problems can occur.
+Under certain conditions git gc can cause a repo explosion, primarily when unreferenced objects are removed from pack files and are placed as loose refs in the file-system.  Eventually git gc should prune these, but until that happens serious problems can occur.
 
 Some of the situations which can cause many unreferenced objects:
 
@@ -126,7 +129,7 @@ Running GC regularly is important, jgit does not have built in gc so unlike a re
 
   nice -n 19 ionice -c 3 gitexproll.sh -r 5 ...
 
-Pack file churn can lead to several issues, RAM utilization, Disk utilization and excessive BW utilization from filesystem mirroring scripts (such as rysnc).
+Pack file churn can lead to several issues, RAM utilization, Disk utilization and excessive BW utilization from file-system mirroring scripts (such as rysnc).
 
 == Keep and Noz files ==
 
@@ -141,4 +144,4 @@ The temporary unjared war files in here can build up.  (This has been move to re
 
 = hooks =
 
-Servers with lots of RAM are succeptible to slow forks which can delay each hook invocation quite a bit.  When java uses over 10G of memory, it may add at least a second to each hook invocation.  Using java 7 seems to avoid this problem and makes hooks blazingly fast again.
+Servers with lots of RAM are susceptible to slow forks which can delay each hook invocation quite a bit.  When java uses over 10G of memory, it may add at least a second to each hook invocation.  Using java 7 seems to avoid this problem and makes hooks blazingly fast again.
