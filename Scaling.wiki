@@ -109,6 +109,8 @@ If you have android repositories, you likely use around 400 of them.  Cross proj
 
 == ACLS ==
 
+On servers with little or no anonymous access, and large change counts, it can be disastrous when non-logged-in users access a change-list page.  A change-list page scans all the changes and skips the changes a user cannot see until it has found enough changes to display which the user can see.  When there is no anonymous access, this may mean traversing all of the changes in your instance only to return a blank list.  When the change count starts approaching 1M changes, this large change traversal can cripple even a very high scale DB and Gerrit combination.  This is most prevalent on Monday mornings after your users return to the office and have not logged into Gerrit yet (but are still accessing it).  One hacky way to deal with this is to potentially make a change to Gerrit to never run the ChangeList page for non-logged in users.  However, this is not a viable solution for public sites.  Of course, public sites likely do not have 1M changes which are not visible to non-logged in users.  It may make sense to make this a configuration option in Gerrit at some point if this cannot be sped up?
+
 ----
 
 = Disk Space / File Cleanup =
