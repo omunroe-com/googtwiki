@@ -63,9 +63,13 @@ Is this related to resetting the key after a certain amount of data?
 
 ----
 
-= Java GC =
+= Java HEAP and GC =
 
-If you overload your server too much, eventually java gc may block.  Large blocking times of over 1 min can be seen under extreme loads.  Limiting the ssh max threads can help prevent this.  Another solution may be to tweak the jvm gc parameters (I have not had luck with that).
+Operations on git repositories can consume lots of memory.  If you consume more memory than your java heap, your server may either run out of memory and fail, or simply thrash forever while java gciing.  Large fetches such as clones tend to be the largest RAM consumers on a Gerrit system.  Since the total potential memory load is generally proportional to the total amount of SSH threads and replication threads combined, it is a good idea to configure your heap size and thread counts together to form a safe combination.  One way to do that is to first determine your maximum memory usage per thread.  Once you have determined the per thread usage, you can tune your server so that you total thread count multiplied by your maximum memory usage per thread, does not exceed your heap size.
+
+One way to figure out your maximum memory usage per thread, is to find your maximum git clone tipping point.  Your tipping point is the maximum number of clones that you can perform in parallel without causing your server to run out of memory.  To do this, you must first tune your server so that your ssh threads are set to higher than safe value.  You must set it to a value at least as high as the number of parallel clones you are going to attempt.  When ready, increase your testing with higher and higher clone counts until the server tips, then deduce the point right before it tips.  Once you have found the tipping point, you can calculate the approximate per thread memory usage by dividing your heap size by your clone count.  If you find that you still have large java gc, you may further want to reduce your thread counts.  
+
+Your luck may vary with tweaking your jvm gc parameters.  You may find that increasing the size of the young generation may help drastically reduce the amount of gc thrashing your server performs.
 
 ----
 
