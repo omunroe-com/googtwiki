@@ -6,8 +6,8 @@ As you scale, you will always run into some issues.  Depending on your specific 
 
  * Number of Changes: Several sites have close to 1M changes.
  * Number of Projects: Some Gerrit installs have 20K projects, many have at least a few thousand
- * Number of Refs: Some Gerrit installs have projects with close to 500K refs
- * Number of Users: Many installs server 1K users, some serve at least 3K.
+ * Number of Refs: Several sites have projects with over 100K refs, at least one has close to 500K refs
+ * Number of Users: Many installs serve 1K users, some serve at least 3K.
  * Number of Groups: Some Gerrit installs use 6K groups (most issues have been worked out here)
  * Single Repository Sizes:  Some Gerrit projects are 40G aggressively packed, these can often cause issues with email templates taking lots of CPU
  * Total Repository Sizes: Gerrit can handle at least 1TB of repository data easily
