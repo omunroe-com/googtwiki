@@ -49,7 +49,7 @@ The Gerrit MultiMaster plug-in describes how to setup a single site multi-master
 
 = Jetty =
 
-The default built in container which Gerrit uses is Jetty.  Some installations have had serious "Failed to dispatch" errors which lead to 100%CPU and filled up logs requiring a server reboot.  One way to workaround this issue appears to be using [https://gerrit-review.googlesource.com/#/c/35010/6/Documentation/install-tomcat.txt Tomcat] instead to replace Jetty.  Another solution is to set http.maxqueued = 0 if you are not too concerned with DDOS attacks.
+The default built in web container which Gerrit uses is Jetty.  Some installations have had serious "Failed to dispatch" errors which lead to 100%CPU and filled up logs, requiring a server reboot to recover.  This can triggered by long running RPCs building causing the http queue to be used.  One way to workaround this issue is to set http.maxqueued = 0.  Alternatively, you can use [https://gerrit-review.googlesource.com/#/c/35010/6/Documentation/install-tomcat.txt Tomcat] instead to replace Jetty.  
 
 ----
 
