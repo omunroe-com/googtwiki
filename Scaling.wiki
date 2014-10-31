@@ -26,24 +26,24 @@ The first step to scaling is to scale your master server.  Some easy, but pricey
 
   * Adding cores, some of the larger installations use 48 core machines
   * Adding RAM, most of the larger installations have over 100GB, at least one has 1TB
-  * Ensure fast disk IO, SSDs help prevent serious performance degradation when repos are not well repacked.
+  * Ensure fast disk IO, SSDs help prevent serious performance degradation when repos are not well repacked (seeks can be crippling here).
   * Network, I suspect that most large installs use 10Gb Ethernet
 
 == Mirrors/Slaves ==
 
-Once you have a decent master, it is probably worth adding either some git mirrors (if you do not need ACLs on your repos), or Gerrit slaves to help offload much of your read only requests.  Mirrors/Slaves can also help reduce LAN and WAN traffic if you place them nearer your users/build hosts, this can be particularly useful for remote sites.  Some of the larger installations have at least 25 of these.
+Once you have a decent master, it is probably worth adding either some git mirrors (if you do not need ACLs on your repos), or Gerrit slaves to help offload much of your read only requests.  Mirrors/Slaves can also help reduce LAN and WAN traffic if you place them nearer to your users/build hosts.  This can be particularly useful for remote sites.  Some of the larger installations have at least 25 of these.
 
 === Shared Storage and Replication Entries For Slaves ===
 
-A common practice is to use site local shared storage on remote slaves when there is more than one slave at the remote site.  This requires consolidating the replication events to those slaves in order to avoid having duplicated pushes to the same storage.  This consolidation means that the master replication file will only have one entry for each set of slaves on the same storage.  One major advantage of this is that it reduces the data required to be pushed during replication to that site.  While a single slave could be setup as the sole replication receiver, added availability and scaling is being reliably achieved by using a load balancer on the receiving end.
+A common practice is to use site local shared storage (NFS...) on remote slaves when there is more than one slave at the remote site.  One major advantage of this is that it reduces the data required to be pushed during replication to that site.  This requires consolidating the replication events to those slaves in order to avoid having duplicated pushes to the same storage.  This consolidation means that the master replication file will only have one entry for each set of slaves on the same storage.  While a single slave could be setup as the sole replication receiver, added availability and scaling is being reliably achieved by using a load balancer on the receiving end to distribute each incoming push to a different slave (since the back-end storage is the same, they all will see the every update).
 
 === DB Slaves ===
 
-DB slaves can be used on remote sites so that remote slaves do not have to traverse the WAN to talk to the master DB.  Both PostGreSQL and MYSQL is been used successfully for this.  This can be particularly helpful to help reduce some WAN traffic related to high ref counts when doing repo syncs (the [https://gerrit-review.googlesource.com/#/c/35220 change cache] was designed to help with this.)
+DB slaves are being used on remote sites so that remote slaves do not have to traverse the WAN to talk to the master DB.  Both PostGreSQL and MYSQL are being used successfully for this.  This can be particularly helpful to help reduce some WAN traffic related to high ref counts when doing repo syncs (the [https://gerrit-review.googlesource.com/#/c/35220 change cache] was also designed to help with this.)
 
 == Multi - Master ==
 
-The Gerrit MultiMaster plug-in describes how to setup a single site multi-master with a shared repo back-end, but there are no known sites using the opens source MM technology yet.  The google hosted gerrit-review site currently runs in multi-site multi-master mode, but it relies on proprietary technology to do so.
+The Gerrit MultiMaster plug-in describes how to setup a single site multi-master with a shared storage back-end for git repoitory data.  However, there are currently no known sites using the open source MM technology yet.  The google hosted gerrit-review site currently runs in multi-site multi-master mode, but it relies on proprietary technology to do so.
 
 ----
 
