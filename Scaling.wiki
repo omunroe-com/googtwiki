@@ -103,13 +103,13 @@ Suggest to your users that they use the latest git possible, many of the older v
 
 == jgit ==
 
-jGit still has a [http://groups.google.com/group/repo-discuss/browse_thread/thread/d0914922dc565516 performance problem] with high refs.  This [https://git.eclipse.org/r/#/c/24295/ minbucket] path or the [https://git.eclipse.org/r/5491 Integer Priority Queue] have been proposed and will drastically reduce upload and replication times in Gerrit if applied for repos with many (> 60K?) patch sets.
+jGit still has a [http://groups.google.com/group/repo-discuss/browse_thread/thread/d0914922dc565516 performance problem] with high refs.  Two diffenert patches, the [https://git.eclipse.org/r/#/c/24295/ bucket queue] patch and the [https://git.eclipse.org/r/5491 integer priority queue] patch, have been proposed and will drastically reduce upload and replication times in Gerrit if applied for repos with many (> 60K?) patch sets.
 
 There are some very high performance patches which make jgit extremely fast.
 
 == Tags ==
 
-If you have android repositories, you likely use around 400 of them.  Cross project tagging can be [http://marc.info/?l=git&m=133772533609422&w=2 problematic].  There are no good solutions yet to this problem.
+If you have android repositories, you likely use around 400-600 of them.  Cross project tagging can be [http://marc.info/?l=git&m=133772533609422&w=2 problematic].  There are no good solutions yet to this problem.
 
 ----
 
@@ -125,7 +125,7 @@ Installations which do not have enough spare disk space for their repos can run 
 
 == Git GC Repo Explosions ==
 
-Under certain conditions git gc can cause a repo explosion, primarily when unreferenced objects are removed from pack files and are placed as loose refs in the file-system.  Eventually git gc should prune these, but until that happens serious problems can occur.
+Under certain conditions git gc can cause a repo explosion (jgit gc does not suffer from this problem because it puts unreachable objects in a packfile), primarily when unreferenced objects are removed from pack files and are placed as loose refs in the file-system.  Eventually git gc should prune these, but until that happens serious problems can occur.
 
 Some of the situations which can cause many unreferenced objects:
 
@@ -135,11 +135,11 @@ Some of the situations which can cause many unreferenced objects:
 
 == Git GC ==
 
-Running GC regularly is important, jgit does not have built in gc so unlike a regular git repo it will not auto run every now and then.  Setting up a crontab is probably a good idea.  If you do run gc too often, however excessive pack file churn can also be a problem.  A potential [https://gerrit-review.googlesource.com/#/c/35215/ solution] for packfile churn:
+Running GC regularly is important, particularly on sites with heavy uploads.  Older versions of jgit do not have built in gc and require using git gc.  Setting up a crontab is probably a good idea in these case.  If you do run gc too often, however excessive pack file churn can also be a problem.  A potential [https://gerrit-review.googlesource.com/#/c/35215/ solution] for packfile churn:
 
   nice -n 19 ionice -c 3 gitexproll.sh -r 5 ...
 
-Pack file churn can lead to several issues, RAM utilization, Disk utilization and excessive BW utilization from file-system mirroring scripts (such as rysnc).
+Pack file churn can lead to several issues, RAM utilization, Disk utilization and excessive WAN utilization for file-system mirroring scripts (such as rysnc).
 
 == Keep and Noz files ==
 
