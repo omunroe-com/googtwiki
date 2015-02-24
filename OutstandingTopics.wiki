@@ -7,22 +7,12 @@ Following a   [https://groups.google.com/forum/#!topic/repo-discuss/qKz7AtZDlC4 
 The purpose of this page is to keep track of them and prevent the risk of them being forgotten in the Gerrit changes backlog. The topics listed here are either related to the Gerrit architecture or to some fixes to severe bugs that need particular attention and time for being reviewed and merged.
 
 Currently outstanding topics are:
+  # [OutstandingTopics#Top_menu_loading Top-menu-loading]
   # [OutstandingTopics#Pluggable_authentication_backend auth-backends-HttpAuthProtocol]
   # [OutstandingTopics#Secure_Store secure-store]
   # [OutstandingTopics#Angular_Gerrit angular-gerrit-integration]
 
 -----
-
-=External ID for identity federation=
-
-Allows to federate Gerrit identity with a 3rd party authentication system and store the authenticated code into user's external identities.
-
-This change allows to effectively enable SSO with 3rd party systems (e.g. GitHub OAuth) and propagate Gerrit's authenticated session to the 3rd party backend API by using an additional external ID code stored into the account_external_ids table.
-
-  * Gerrit changes: [https://gerrit-review.googlesource.com/#/q/status:open+project:gerrit+branch:master+topic:external-ids changes]
-  * Owner: [https://gerrit-review.googlesource.com/#/q/owner:%22Luca+Milanesio%22+status:open Luca]
-  * Status: review started (+1)
-  * Issues: Need extra reviewers with +2 permissions to finalise the change.
 
 =Top-menu loading=
 
