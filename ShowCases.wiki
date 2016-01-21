@@ -12,6 +12,7 @@
 
 ==== Other ====
 
+ * [http://gerrit-review.googlesource.com Gerrit]
  * [http://chromium-review.googlesource.com ChromiumOS]
  * [http://review.couchbase.org Couchbase] 
  * [https://git.eclipse.org/r/ Eclipse]
@@ -28,3 +29,6 @@
  * [http://gerrit.async.com.br STOQ] 
  * [https://review.typo3.org Typo3] 
  * [https://gerrit.wikimedia.org Wikimedia]
+ * [http://review.gluster.org Gluster]
+ * [https://gerrit.tuleap.net Tuleap]
+ * [https://go-review.googlesource.com Go (programming language)]
