@@ -32,3 +32,5 @@
  * [http://review.gluster.org Gluster]
  * [https://gerrit.tuleap.net Tuleap]
  * [https://go-review.googlesource.com Go (programming language)]
+ * [https://review.openswitch.net OpenSwitch]
+ * [https://dev.vaadin.com Vaadin]
